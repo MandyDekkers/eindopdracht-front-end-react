@@ -1,0 +1,34 @@
+.register-button {
+    background-color: red;
+}
+
+.register-button:hover {
+    background-color: greenyellow;
+}
+
+label {
+    display: flex;
+    justify-content: start;
+
+}
+
+input{
+
+}
+
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+
+
+.form {
+    border-style: groove;
+    background-color: greenyellow;
+
+}
