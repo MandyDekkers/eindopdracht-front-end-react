@@ -12,15 +12,13 @@ function RegisterPage() {
     //
     // const onError = (errorList) => {
     //     console.log(errorList)
-    // }
+    //
 
     return (
         <>
-            <div className="form-container">
-                <h2>Jouw registratie:</h2>
-                <div className="form">
-                <form onSubmit={handleSubmit(onFormSubmit)}>
-
+            <div className="register-box">
+                    <form className="form" onSubmit={handleSubmit(onFormSubmit)}>
+                        <h2>Register here</h2>
                         <label htmlFor="firstname-field">Voornaam:</label>
                         <input
                             name="firstname"
@@ -30,7 +28,7 @@ function RegisterPage() {
                         />
                         {errors.firstname && <p>Invoer voornaam is verplicht</p>}
 
-                    <label htmlFor="lastname-field">
+                        <label htmlFor="lastname-field">
                         Achternaam:</label>
                         <input
                             type="text"
@@ -67,10 +65,9 @@ function RegisterPage() {
                             id="telephonenumber-field"
                             name="telephonenumber"
                             pattern="[0-9]{2}-[0-9]{8}"
+                            placeholder="06-12345678"
                             ref={register}
                         />
-                        <br/>
-                        <small>(06-12345678)</small>
 
                         <label htmlFor="emailaddress-field">E-mailadres:</label>
                         <input
@@ -101,7 +98,6 @@ function RegisterPage() {
                         {/*{errors.emailAddress && <p>Invoer e-mailadres is verplicht</p>}*/}
 
                         <label htmlFor="text-field">Opmerkingen:</label>
-                        <br/>
                         <textarea
                             name="text"
                             id="text-field"
@@ -111,18 +107,14 @@ function RegisterPage() {
                         />
                         {/*{errors.emailAddress && <p>Invoer e-mailadres is verplicht</p>}*/}
 
-
-
                     <label htmlFor="terms-and-conditions-field">
+                        Ik ga akkoord met de algemene voorwaarden.</label>
                         <input
                             type="checkbox"
                             name="terms-and-conditions"
                             id="terms-and-conditions-field"
                            // ref={register({ required: true })}
                         />
-                        Ik ga akkoord met de algemene voorwaarden.
-                    </label>
-
 
                     <button className="register-button"
                         type="submit"
@@ -132,7 +124,6 @@ function RegisterPage() {
                         Verstuur
                     </button>
                 </form>
-                </div>
             </div>
         </>
     );
