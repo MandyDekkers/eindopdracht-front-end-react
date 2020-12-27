@@ -2,7 +2,7 @@ import axios from "axios";
 import { useForm } from 'react-hook-form';
 import React from 'react';
 import './LoginPage.css';
-import { ReactComponent as Userphoto  } from './gebruiker2.svg';
+import { ReactComponent as Userphoto  } from '../assets/gebruiker2.svg';
 
 function LoginPage() {
 

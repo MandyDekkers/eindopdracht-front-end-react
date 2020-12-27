@@ -7,11 +7,11 @@
 /*    background-color: greenyellow;*/
 /*}*/
 
-body {
-    background: url("achtergrond-afbeelding.jpg") no-repeat center center fixed;;
-    background-size: cover;
-    font-family: sans-serif;
-}
+/*body {*/
+/*    background: url("achtergrond-afbeelding.jpg") no-repeat center center fixed;;*/
+/*    background-size: cover;*/
+/*    font-family: sans-serif;*/
+/*}*/
 
 .login-box {
     width: 320px;

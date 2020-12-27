@@ -16,6 +16,7 @@ function RegisterPage() {
 
     return (
         <>
+
             <div className="register-box">
                     <form className="form" onSubmit={handleSubmit(onFormSubmit)}>
                         <h2>Register here</h2>
@@ -125,6 +126,7 @@ function RegisterPage() {
                     </button>
                 </form>
             </div>
+
         </>
     );
 }

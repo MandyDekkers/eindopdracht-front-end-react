@@ -10,12 +10,25 @@ import ProfilePage from "./pages/ProfilePage";
 import ReservationPage from "./pages/ReservationPage";
 import ContactPage from "./pages/ContactPage";
 import Footer from "./components/footer/Footer";
+import axios from 'axios';
+import {get} from "react-hook-form";
 
 function App() {
 
    // const [loggedIn, setLoggedIn] = useState(false);
 
+    // loading: Rein video 15 dec 1:17:37
+// if (state === 0){
+//     return <h1>Loading...</h1> of een gifje bewegend
+//     else {
+//         return ()
+//         reeds geschreven functie
+//     }
+// }
+
+
   return (
+
       <Router>
                 <Switch>
 

@@ -1,4 +1,14 @@
 
+body {
+    background-color: honeydew;
+}
+
+.test {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+}
+
 .register-box {
     display: flex;
     flex-direction: column;
