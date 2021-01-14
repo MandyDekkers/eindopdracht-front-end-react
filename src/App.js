@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
 import { useState, useEffect, useContext } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import ReservationPage from "./pages/ReservationPage";
@@ -12,6 +11,7 @@ import ContactPage from "./pages/ContactPage";
 import Footer from "./components/footer/Footer";
 import axios from 'axios';
 import {get} from "react-hook-form";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
 
@@ -28,36 +28,33 @@ function App() {
 
 
   return (
-
       <Router>
                 <Switch>
-
-                    <Route exact path="/">
-                    <LoginPage />
-                    </Route>
-
-                    <Route path="/register">
-                    <RegisterPage />
-                    </Route>
-
-                    <Route path="/home">
-                    <HomePage  />
-                    </Route>
-
                     <Route path="/profile">
-                    <ProfilePage />
+                        <ProfilePage />
                     </Route>
 
                     <Route path="/reservation">
-                    <ReservationPage />
+                        <ReservationPage />
                     </Route>
 
                     <Route path="/contact">
-                    <ContactPage />
+                        <ContactPage />
+                    </Route>
+
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+
+                    <Route path="/register">
+                        <RegisterPage />
+                    </Route>
+
+                    <Route path="/admin">
+                        <AdminPage />
                     </Route>
 
                 </Switch>
-
                {/*<Footer />*/}
       </Router>
   );

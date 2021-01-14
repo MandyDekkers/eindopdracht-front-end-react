@@ -1,61 +1,94 @@
 import axios from "axios";
 import { useForm } from 'react-hook-form';
-import React from 'react';
 import './LoginPage.css';
-import { ReactComponent as Userphoto  } from '../assets/gebruiker2.svg';
+import { useHistory } from 'react-router-dom';
+import './RegisterPage';
+import {useState} from "react";
 
+// loading: Rein video 15 dec 1:17:37
+// if (state === 0){
+//     return <h1>Loading...</h1> of een gifje bewegend
+//     else {
+//         return ()
+//         reeds geschreven functie
+//     }
+// }
 function LoginPage() {
 
-    const { handleSubmit, register, errors, watch } = useForm();
+    const {handleSubmit, register, errors} = useForm();
+    const [sendSucces, setSendSucces] = useState(false);
+    const [error, setError] = useState(false);
+
+    const history = useHistory();
+
+    function handleClick() {
+        history.push("/register");
+    }
+
+    async function formSubmit(data) {
+        setError(false);
+        try {
+            const response = await axios.post(`http://localhost:8080/appuser`, data);
+            console.log(data);
+            setSendSucces(true);
+        } catch (e) {
+            console.error(e);
+            setError(true);
+        }
+    }
+
+    // if(setSendSucces){
+    //     go to profilepage...
+    // }
 
     return (
-    <>
-        <div className="login-box">
-            <Userphoto className="user"/>
-                <h2>Login here</h2>
-                    <form>
-                        <p>Username</p>
-                            <input type="text" name="username" placeholder="enter username"/>
-                        <p>Password</p>
-                            <input type="password" name="password" placeholder="enter password"/>
-                            <input type="submit" name="submit" value="Login"/>
-                            <a href="#">Forget password</a>
-                    </form>
+        <>
+            <div className="login-container">
+                {/*<Userphoto className="user"/>*/}
+                <form className="login-form" onSubmit={handleSubmit(formSubmit)}>
+                    <label htmlFor="username-field">E-mailadres*:</label>
+                    <input
+                        name="username"
+                        id="username-field"
+                        type="email"
+                        placeholder="your@e-mail.com"
+                        ref={register({required: true})}
+                    />
+                    {errors.username && <p>Gebruikersnaam is verplicht</p>}
 
+                    <label htmlFor="password-field">Wachtwoord*:</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password-field"
+                        ref={register(
+                            {
+                                required: {
+                                    value: true,
+                                    message: 'Dit veld mag niet leeg zijn',
+                                },
+                                minLength: {
+                                    value: 8,
+                                    message: 'Min. 8 karakters',
+                                },
+                            }
+                        )}
+                    />
+                    {errors.password && errors.password.message}
 
-        {/*<form className="loginbox">*/}
-        {/*    <div>*/}
-        {/*        <label htmlFor="username-field">Gebruikersnaam:</label>*/}
-        {/*        <input*/}
-        {/*            name="username"*/}
-        {/*            id="username-field"*/}
-        {/*            type="text"*/}
-        {/*            ref={register({required: true})}*/}
-        {/*        />*/}
-        {/*        {errors.username && <p>Gebruikersnaam is verplicht</p>}*/}
-        {/*    </div>*/}
-        {/*    <div>*/}
-        {/*        <label htmlFor="password-field">*/}
-        {/*            Wachtwoord:*/}
-        {/*            <input*/}
-        {/*                type="password"*/}
-        {/*                name="password"*/}
-        {/*                id="password-field"*/}
-        {/*                ref={register({ required: true })}*/}
-        {/*            />*/}
-        {/*            {errors.password && <p>Wachtwoord is verplicht</p>}*/}
-        {/*        </label>*/}
-        {/*    </div>*/}
+                    <button className="login-button"
+                            type="submit"
+                        // disabled={errors}
+                    >Inloggen
+                    </button>
 
-        {/*    <button className="login-button"*/}
-        {/*        type="submit"*/}
-        {/*        // disabled={!checkedTerms}*/}
-        {/*        // onClick={() => setSubmitted(true)}*/}
-        {/*    >*/}
-        {/*        Inloggen*/}
-        {/*    </button>*/}
-        {/*</form>*/}
-        </div>
+                    <p>Wachtwoord vergeten?</p>
+
+                    <p className="new" onClick={handleClick}>Nieuw? Registreer je hier!</p>
+
+                </form>
+            </div>
+
         </>
     );
 }

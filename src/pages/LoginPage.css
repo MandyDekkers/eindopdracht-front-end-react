@@ -1,104 +1,120 @@
-
-/*.login-button {*/
-/*    background-color: red;*/
+/*.new {*/
+/*    cursor: pointer;*/
 /*}*/
+
+/*.login-container {*/
+/*    min-height: 100vh;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.login-form {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    flex-direction: column;*/
+/*    padding: 50px;*/
+/*    background: rgba(0,0,0,0.4);*/
+/*}*/
+
+/*.login-form label {*/
+
+/*}*/
+
+/*.login-form input {*/
+/*    width: 100%;*/
+/*    margin-bottom: 15px;*/
+/*    border: none;*/
+/*    border-bottom: 1px solid #fff;*/
+/*    background: transparent;*/
+/*    height: 40px;*/
+/*    outline: none;*/
+/*    color: whitesmoke;*/
+/*}*/
+
+/*!*.login-button {*!*/
+/*!*    padding: 8px;*!*/
+/*!*    background-color: orange;*!*/
+/*!*}*!*/
 
 /*.login-button:hover {*/
+/*    opacity: 0.6;*/
+/*}*/
+
+/*.user {*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*    top: 50px;*/
+/*    left: calc(50% - 50px);*/
+/*}*/
+
+/*.login-box {*/
+/*    !*display: flex;*!*/
+/*    !*flex-direction: column;*!*/
+/*    !*justify-content: center;*!*/
+/*    !*align-items: center;*!*/
+/*    !*min-height: 100vh;*!*/
 /*    background-color: greenyellow;*/
+/*    width: 320px;*/
+/*    height: 420px;*/
+/*    background: rgba(0,0,0,0.5);*/
+/*    color: greenyellow;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    position: absolute;*/
+/*    transform: translate(-50%, -50%);*/
+/*    box-sizing: border-box;*/
+/*    padding: 70px 30px;*/
 /*}*/
 
-/*body {*/
-/*    background: url("achtergrond-afbeelding.jpg") no-repeat center center fixed;;*/
-/*    background-size: cover;*/
-/*    font-family: sans-serif;*/
+
+
+/*h2 {*/
+/*    margin: 0;*/
+/*    padding: 0 0 20px;*/
+/*    text-align: center;*/
+/*    font-size: 22px;*/
 /*}*/
 
-.login-box {
-    width: 320px;
-    height: 420px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
-}
+/*.login-box p {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-weight: bold;*/
+/*}*/
 
-.user {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
-}
-
-h2 {
-    margin: 0;
-    padding: 0 0 20px;
-    text-align: center;
-    font-size: 22px;
-}
-
-.login-box p {
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-}
-
-.login-box input {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.login-box input[type="text"], input[type="password"] {
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 40px;
-    color: #fff;
-    font-size: 15px;
-}
-
-::-webkit-input-placeholder{
-    color: black;
-    font-weight: lighter;
-}
-
-.login-box input[type="submit"] {
-    border: none;
-    outline: none;
-    height: 40px;
-    background: whitesmoke;
-    color: black;
-    font-size: 18px;
-    border-radius: 20px;
-}
-
-.login-box input[type="submit"]:hover {
-    cursor: pointer;
-    background: lightslategrey;
-    color: white;
-}
-
-.login-box a{
-    text-decoration: none;
-    font-size: 14px;
-    color: #fff;
-}
-
-.login-box a:hover{
-    color: lightslategrey;
-}
+/*::-webkit-input-placeholder{*/
+/*    color: black;*/
+/*    font-weight: lighter;*/
+/*}*/
 
 
+/*.login-box input[type="submit"] {*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    height: 40px;*/
+/*    background: whitesmoke;*/
+/*    color: black;*/
+/*    font-size: 18px;*/
+/*    border-radius: 20px;*/
+/*}*/
 
-/*.loginbox {*/
-/*    border-style: solid;*/
-/*     text-align: center;*/
-/*     margin: 24px 0 12px 0;*/
-/* }*/
+/*.login-box input[type="submit"]:hover {*/
+/*    cursor: pointer;*/
+/*    background: lightslategrey;*/
+/*    color: white;*/
+/*}*/
+
+/*.login-box a{*/
+/*    text-decoration: none;*/
+/*    font-size: 14px;*/
+/*    color: #fff;*/
+/*}*/
+
+/*.login-box a:hover{*/
+/*    color: lightslategrey;*/
+/*}*/
+
+
 

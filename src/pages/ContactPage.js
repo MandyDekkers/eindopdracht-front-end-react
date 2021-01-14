@@ -1,11 +1,14 @@
 import React from 'react';
 import './ContactPage.css';
+import Header from "../components/header/Header";
 
 
 function ContactPage() {
     return (
+
         <div className="container" >
-            <h1>Image Overlay</h1>
+            <Header />
+            <h1>Contact</h1>
             <div className="color-overlay"> </div>
         </div>
     );
