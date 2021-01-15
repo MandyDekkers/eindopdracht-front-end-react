@@ -11,7 +11,6 @@ function RegisterPage() {
     const [sendSucces, setSendSucces] = useState(false);
     const [error, setError] = useState(false);
 
-
     async function onFormSubmit(data) {
         setError(false);
         try {
@@ -37,7 +36,7 @@ function RegisterPage() {
                         />
                         {errors.firstName && <p>Invoer voornaam is verplicht</p>}
 
-                    <label htmlFor="lastname-field">Achternaam:</label>
+                    <label htmlFor="lastname-field">Achternaam*:</label>
                         <input
                         type="text"
                         name="lastName"
@@ -46,7 +45,7 @@ function RegisterPage() {
                         />
                         {errors.lastName && <p>Invoer achternaam is verplicht</p>}
 
-                    <label htmlFor="emailaddress-field">E-mailadres:</label>
+                    <label htmlFor="emailaddress-field">E-mailadres*:</label>
                         <input
                         name="email"
                         id="emailaddres-field"
@@ -54,6 +53,27 @@ function RegisterPage() {
                         ref={register({required: true, validate: (value) => value.includes('@'),})}
                         />
                         {errors.email && <p>Invoer e-mailadres is verplicht</p>}
+
+                    <label htmlFor="password">Wachtwoord*:</label>
+                    <input
+                        type="password"
+                        placeholder="min. 8 karakters"
+                        name="password"
+                        id="password-field"
+                        ref={register(
+                            {
+                                required: {
+                                    value: true,
+                                    message: 'Dit veld mag niet leeg zijn',
+                                },
+                                minLength: {
+                                    value: 8,
+                                    message: 'Min. 8 karakters',
+                                },
+                            }
+                        )}
+                    />
+                    {errors.password && errors.password.message}
 
                     <label htmlFor="telephonenumber-field">Telefoonnummer:</label>
                         <input
@@ -84,7 +104,7 @@ function RegisterPage() {
                     />
                     {errors.streetName && <p>Invoer straatnaam is verplicht</p>}
 
-                    <label htmlFor="housenumber-field">Huisnummer:</label>
+                    <label htmlFor="housenumber-field">Huisnummer + toevoeging:</label>
                     <input
                         name="houseNumber"
                         id="housenumber-field"
@@ -93,22 +113,23 @@ function RegisterPage() {
                     />
                     {errors.houseNumber && <p>Invoer huisnummer is verplicht</p>}
 
-                    <label htmlFor="housenumberadd-field">Huisnummertoevoeging:</label>
+                    <label htmlFor="postalCode-field">Postcode</label>
                     <input
-                        name="houseNumberAdd"
-                        id="housenumberadd-field"
+                        name="postalCode"
+                        id="zipcode-field"
+                        type="text"
+                        ref={register({required: true, pattern: /^[0-9]{4}[a-zA-Z]{2}$/})}
+                    />
+                    {errors.postalCode && <p>Postcode is niet juist</p>}
+
+                    <label htmlFor="city-field">Woonplaats:</label>
+                    <input
+                        name="city"
+                        id="city-field"
                         type="text"
                         ref={register({ required: true })}
                     />
-
-                    <label htmlFor="text-field">Opmerkingen:</label>
-                    <textarea
-                        name="text"
-                        id="text-field"
-                        rows="4" cols="40"
-                        placeholder="aanvullende info/blessures"
-                        ref={register}
-                    />
+                    {errors.city && <p>Invoer woonplaats is verplicht</p>}
 
                     <label htmlFor="termsandconditions-field">Ik ga akkoord met de algemene voorwaarden.</label>
                     <input
@@ -123,170 +144,6 @@ function RegisterPage() {
                     </button>
                 </form>
                 {error && <p>Er is iets misgegaan bij het versturen van je persoonlijke gegevens.</p>}
-
-
-                {/*<form onSubmit={handleSubmit(onFormSubmit)}>*/}
-
-                {/*    <label htmlFor="firstname-field">Voornaam:</label>*/}
-                {/*    <input*/}
-                {/*        name="firstname"*/}
-                {/*        id="firstname-field"*/}
-                {/*        type="text"*/}
-                {/*        ref={register({required: true})}*/}
-                {/*    />*/}
-                {/*    {errors.firstname && <p>Invoer voornaam is verplicht</p>}*/}
-
-                {/*    <label htmlFor="lastname-field">Achternaam:</label>*/}
-                {/*    <input*/}
-                {/*        type="text"*/}
-                {/*        name="lastname"*/}
-                {/*        id="lastname-field"*/}
-                {/*        ref={register({ required: true })}*/}
-                {/*    />*/}
-                {/*    {errors.lastname && <p>Invoer achternaam is verplicht</p>}*/}
-
-                {/*    <label htmlFor="emailaddress-field">E-mailadres:</label>*/}
-                {/*    <input*/}
-                {/*        name="emailaddress"*/}
-                {/*        id="emailaddres-field"*/}
-                {/*        type="text"*/}
-                {/*        ref={register({required: true, validate: (value) => value.includes('@'),})}*/}
-                {/*    />*/}
-                {/*    {errors.emailaddress && <p>Invoer e-mailadres is verplicht</p>}*/}
-
-                {/*    <label htmlFor="telephonenumber-field">Telefoonnummer:</label>*/}
-                {/*    <input*/}
-                {/*        type="tel"*/}
-                {/*        id="telephonenumber-field"*/}
-                {/*        name="telephonenumber"*/}
-                {/*        pattern="[0-9]{2}-[0-9]{8}"*/}
-                {/*        placeholder="06-12345678"*/}
-                {/*        ref={register}*/}
-                {/*    />*/}
-
-                {/*    <label htmlFor="dateofbirth-field">Geboortedatum:</label>*/}
-                {/*    <input*/}
-                {/*        name="dateofbirth"*/}
-                {/*        id="dateofbirth-field"*/}
-                {/*        type="date"*/}
-                {/*        ref={register({ required: true })}*/}
-                {/*    />*/}
-                {/*    {errors.dateofbirth && <p>Invoer geboortedatum is verplicht</p>}*/}
-
-                {/*    <button type="submit">*/}
-                {/*        Versturen*/}
-                {/*    </button>*/}
-
-                {/*</form>*/}
-
-
-                {/*    <form className="form" onSubmit={handleSubmit(onFormSubmit)}>*/}
-                {/*        <h2>Register here</h2>*/}
-                {/*        <label htmlFor="firstname-field">Voornaam:</label>*/}
-                {/*        <input*/}
-                {/*            name="firstname"*/}
-                {/*            id="firstname-field"*/}
-                {/*            type="text"*/}
-                {/*            ref={register({required: true})}*/}
-                {/*        />*/}
-                {/*        {errors.firstname && <p>Invoer voornaam is verplicht</p>}*/}
-
-                {/*        <label htmlFor="lastname-field">*/}
-                {/*        Achternaam:</label>*/}
-                {/*        <input*/}
-                {/*            type="text"*/}
-                {/*            name="lastname"*/}
-                {/*            id="lastname-field"*/}
-                {/*            ref={register({ required: true })}*/}
-                {/*        />*/}
-                {/*        {errors.lastname && <p>Invoer achternaam is verplicht</p>}*/}
-
-
-                {/*        <label htmlFor="streetname-field">*/}
-                {/*            Straatnaam:</label>*/}
-                {/*            <input*/}
-                {/*                type="text"*/}
-                {/*                name="streetname"*/}
-                {/*                id="streetname-field"*/}
-                {/*                ref={register({ required: true })}*/}
-                {/*            />*/}
-                {/*            {errors.streetname && <p>Invoer straatnaam is verplicht</p>}*/}
-
-
-                {/*        <label htmlFor="zipcode-field">Postcode</label>*/}
-                {/*        <input*/}
-                {/*            name="zipcode"*/}
-                {/*            id="zipcode-field"*/}
-                {/*            type="text"*/}
-                {/*            ref={register({required: true, pattern: /^[0-9]{4}[a-zA-Z]{2}$/})}*/}
-                {/*        />*/}
-                {/*        {errors.zipcode && <p>Postcode is niet juist</p>}*/}
-
-                {/*        <label htmlFor="telephonenumber-field">Telefoonnummer:</label>*/}
-                {/*        <input*/}
-                {/*            type="tel"*/}
-                {/*            id="telephonenumber-field"*/}
-                {/*            name="telephonenumber"*/}
-                {/*            pattern="[0-9]{2}-[0-9]{8}"*/}
-                {/*            placeholder="06-12345678"*/}
-                {/*            ref={register}*/}
-                {/*        />*/}
-
-                {/*        <label htmlFor="emailaddress-field">E-mailadres:</label>*/}
-                {/*        <input*/}
-                {/*            name="emailaddress"*/}
-                {/*            id="emailaddres-field"*/}
-                {/*            type="text"*/}
-                {/*            ref={register({required: true, validate: (value) => value.includes('@'),})}*/}
-                {/*        />*/}
-                {/*        {errors.emailaddress && <p>Invoer e-mailadres is verplicht</p>}*/}
-
-
-                {/*    <label htmlFor="dateofbirth-field">Geboortedatum:</label>*/}
-                {/*    <input*/}
-                {/*        name="dateofbirth"*/}
-                {/*        id="dateofbirth-field"*/}
-                {/*        type="date"*/}
-                {/*        ref={register({ required: true })}*/}
-                {/*    />*/}
-                {/*    {errors.dateofbirth && <p>Invoer geboortedatum is verplicht</p>}*/}
-
-                {/*        <label htmlFor="profilephote-field">Uploaden profielfoto:</label>*/}
-                {/*        <input*/}
-                {/*            name="profilephote"*/}
-                {/*            id="profilephote-field"*/}
-                {/*            type="file"*/}
-                {/*            ref={register}*/}
-                {/*        />*/}
-                {/*        /!*{errors.emailAddress && <p>Invoer e-mailadres is verplicht</p>}*!/*/}
-
-                {/*        <label htmlFor="text-field">Opmerkingen:</label>*/}
-                {/*        <textarea*/}
-                {/*            name="text"*/}
-                {/*            id="text-field"*/}
-                {/*            rows="4" cols="40"*/}
-                {/*            placeholder="aanvullende info/blessures"*/}
-                {/*            ref={register}*/}
-                {/*        />*/}
-                {/*        /!*{errors.emailAddress && <p>Invoer e-mailadres is verplicht</p>}*!/*/}
-
-                {/*    <label htmlFor="terms-and-conditions-field">*/}
-                {/*        Ik ga akkoord met de algemene voorwaarden.</label>*/}
-                {/*        <input*/}
-                {/*            type="checkbox"*/}
-                {/*            name="terms-and-conditions"*/}
-                {/*            id="terms-and-conditions-field"*/}
-                {/*           // ref={register({ required: true })}*/}
-                {/*        />*/}
-
-                {/*    <button className="register-button"*/}
-                {/*        type="submit"*/}
-                {/*        // disabled={!checkedTerms}*/}
-                {/*        // onClick={() => setSubmitted(true)}*/}
-                {/*    >*/}
-                {/*        Verstuur*/}
-                {/*    </button>*/}
-                {/*</form>*/}
             </div>
         </>
     );

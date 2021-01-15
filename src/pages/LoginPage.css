@@ -1,41 +1,41 @@
-/*.new {*/
-/*    cursor: pointer;*/
-/*}*/
+.create-account {
+    cursor: pointer;
+}
 
-/*.login-container {*/
-/*    min-height: 100vh;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/*.login-form {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    flex-direction: column;*/
-/*    padding: 50px;*/
-/*    background: rgba(0,0,0,0.4);*/
-/*}*/
+.login-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 50px;
+    background: rgba(0,0,0,0.4);
+}
 
 /*.login-form label {*/
 
 /*}*/
 
-/*.login-form input {*/
-/*    width: 100%;*/
-/*    margin-bottom: 15px;*/
-/*    border: none;*/
-/*    border-bottom: 1px solid #fff;*/
-/*    background: transparent;*/
-/*    height: 40px;*/
-/*    outline: none;*/
-/*    color: whitesmoke;*/
-/*}*/
+.login-form input {
+    width: 100%;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    height: 40px;
+    outline: none;
+    color: whitesmoke;
+}
 
-/*!*.login-button {*!*/
-/*!*    padding: 8px;*!*/
-/*!*    background-color: orange;*!*/
-/*!*}*!*/
+/*.login-button {*/
+/*    padding: 8px;*/
+/*    background-color: orange;*/
+/*}*/
 
 /*.login-button:hover {*/
 /*    opacity: 0.6;*/

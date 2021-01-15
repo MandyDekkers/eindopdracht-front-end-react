@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
 @media screen and (min-width: 576px) {
 
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: 'Quicksand', 'Arial', sans-serif;
+        /*background: url("achtergrond-afbeelding.jpg") no-repeat;*/
+        /*background-size: cover;*/
+        /*opacity: 0.5;*/
+    }
+
+    body {
+
     }
 
     a,
@@ -16,4 +25,5 @@
     .active-link {
         border-bottom: 2px solid black;
     }
+
 }

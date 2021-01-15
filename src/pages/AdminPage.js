@@ -4,8 +4,6 @@ import axios from 'axios';
 import Member from "../components/member/Member";
 import Searchbar from "../components/searchbar/Searchbar";
 
-
-
 function AdminPage() {
 
     const [members, setMembers] = useState();

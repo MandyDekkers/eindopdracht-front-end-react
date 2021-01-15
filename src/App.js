@@ -12,6 +12,7 @@ import Footer from "./components/footer/Footer";
 import axios from 'axios';
 import {get} from "react-hook-form";
 import AdminPage from "./pages/AdminPage";
+import PersonalinfoPage from "./pages/Personalinfo";
 
 function App() {
 
@@ -30,8 +31,20 @@ function App() {
   return (
       <Router>
                 <Switch>
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+
+                    <Route path="/register">
+                        <RegisterPage />
+                    </Route>
+
                     <Route path="/profile">
                         <ProfilePage />
+                    </Route>
+
+                    <Route path="/personalinfo">
+                        <PersonalinfoPage />
                     </Route>
 
                     <Route path="/reservation">
@@ -40,14 +53,6 @@ function App() {
 
                     <Route path="/contact">
                         <ContactPage />
-                    </Route>
-
-                    <Route path="/login">
-                        <LoginPage />
-                    </Route>
-
-                    <Route path="/register">
-                        <RegisterPage />
                     </Route>
 
                     <Route path="/admin">

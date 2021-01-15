@@ -1,0 +1,14 @@
+.update-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.update-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 32px;
+    background: rgba(0,0,0,0.4);
+}

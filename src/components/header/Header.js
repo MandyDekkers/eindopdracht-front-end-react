@@ -10,19 +10,13 @@ function Header(){
         history.push("/login");
     }
 
-    function logo() {
-        history.push("/");
-    }
-
 return (
         <nav>
             <div className="nav-container">
-                <div onClick={logo} className="logo-button">
-                    BEDRIJFSLOGO
-                </div>
+                <div className="logo-button"><Link to="/profile"><h1>BEDRIJFSLOGO</h1></Link></div>
                 <ul>
-                    <NavLink exact to="/" activeClassName="active-link">Home</NavLink>
-                    <NavLink to="/profile" activeClassName="active-link">Profiel</NavLink>
+                    <NavLink exact to="/profile" activeClassName="active-link">Home</NavLink>
+                    <NavLink to="/personalinfo" activeClassName="active-link">Mijn gegevens</NavLink>
                     <NavLink to="/reservation" activeClassName="active-link">Reserveren</NavLink>
                     <NavLink to="/contact" activeClassName="active-link">Contact</NavLink>
                     <div onClick={handleClick}>
