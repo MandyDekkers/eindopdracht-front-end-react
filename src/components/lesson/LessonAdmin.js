@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import axios from "axios";
-import UpdateMember from "../member/UpdateMember";
-import {get} from "react-hook-form";
 import UpdateLesson from "./UpdateLesson";
 
 function LessonAdmin({ lesson, getAllLessons }) {
@@ -54,7 +52,7 @@ function LessonAdmin({ lesson, getAllLessons }) {
             <UpdateLesson
                 getAllLessons={getAllLessons}
                 lesson={lesson}
-                setUpdate={setUpdate()}
+                setUpdate={setUpdate}
             />
             </div>
             )}

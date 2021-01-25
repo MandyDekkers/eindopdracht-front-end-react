@@ -69,7 +69,7 @@ function AdminPage() {
 
     useEffect(() => {
         getAllLessons();
-    }, []);
+    }, [lessons]);
 
     async function getAllLessons() {
         try {
@@ -136,13 +136,10 @@ function AdminPage() {
                         <LessonAdmin
                         key={lesson.id}
                         lesson={lesson}
-                        getAllLessons={getAllLessons()}
+                        getAllLessons={getAllLessons}
                         />
-
                     ))}
-
                 </div>
-
             </div>
           </>
     )

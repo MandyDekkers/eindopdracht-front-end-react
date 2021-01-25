@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { ReactComponent as Logout  } from '../../assets/logout.svg';
 import './Header.css';
+import {AuthContext, useAuthState} from "../../context/AuthContext";
 
 function Header(){
     const history = useHistory();
 
-    function handleClick() {
-        history.push("/login");
-    }
+    const { isAuthenticated } = useAuthState();
+    const { logout } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (isAuthenticated === false) {
+            history.push('/login');
+        }
+    }, [isAuthenticated]);
 
 return (
         <nav>
@@ -19,7 +25,8 @@ return (
                     <NavLink to="/personalinfo" activeClassName="active-link">Mijn gegevens</NavLink>
                     <NavLink to="/reservation" activeClassName="active-link">Reserveren</NavLink>
                     <NavLink to="/contact" activeClassName="active-link">Contact</NavLink>
-                    <div onClick={handleClick}>
+                    <div onClick={() => logout()}
+                    >
                         <Logout className="log-out-icon" />
                     </div>
                 </ul>

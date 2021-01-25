@@ -26,12 +26,12 @@ function NewLesson() {
                 <form className="lesson-from" onSubmit={handleSubmit(onFormSubmit)}>
                     <label htmlFor="kindOfLesson-field">Soort les*:</label>
                     <input
-                        name="kindOfLesson"
+                        name="lessonName"
                         id="kindOfLesson-field"
                         type="text"
                         ref={register({required: true})}
                     />
-                    {errors.kindOfLesson && <p>Invoer soort les is verplicht</p>}
+                    {errors.lessonName && <p>Invoer soort les is verplicht</p>}
 
                     <label htmlFor="location-field">Locatie*:</label>
                     <input
@@ -44,7 +44,7 @@ function NewLesson() {
 
                     <label htmlFor="date-field">Datum*:</label>
                     <input
-                        name="email"
+                        name="date"
                         id="date-field"
                         type="date"
                         ref={register({required: true })}
@@ -55,7 +55,7 @@ function NewLesson() {
                     <input
                         type="tel"
                         id="maxMembers-field"
-                        name="maxAmountOfMembers"
+                        name="amountMembers"
                         ref={register({required: true })}
                     />
                     {errors.maxAmountOfMembers && <p>Invoer maximaal aantal deelnemers is verplicht</p>}

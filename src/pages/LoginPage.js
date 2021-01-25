@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useForm } from 'react-hook-form';
+import {AuthContext, useAuthState} from "../context/AuthContext";
 import './LoginPage.css';
 import './RegisterPage';
-import { useState } from "react";
-import { Link } from 'react-router-dom';
+import {useState, useContext, useEffect} from "react";
+import { Link, useHistory } from 'react-router-dom';
 
 // loading: Rein video 15 dec 1:17:37
 // if (state === 0){
@@ -14,33 +15,53 @@ import { Link } from 'react-router-dom';
 //     }
 // }
 
+const endpointLink = 'https://polar-lake-14365.herokuapp.com/api/auth/signin'; // eigen endpointlink toevoegen
+
 function LoginPage() {
 
+    const { login } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthState();
+
+    const [loading, toggleLoading] = useState(false);
+    const [error, setError] = useState('');
+
     const {handleSubmit, register, errors} = useForm();
-    const [sendSucces, setSendSucces] = useState(false);
-    const [error, setError] = useState(false);
+
+    const history = useHistory();
+
+    useEffect( () => {
+        if (isAuthenticated === true) {
+            history.push('/profile');
+        }
+        console.log(isAuthenticated);
+    }, [isAuthenticated]);
 
     async function formSubmit(data) {
-        setError(false);
+        toggleLoading(true);
+        setError('');
+
         try {
-            const response = await axios.post(`http://localhost:8080/appuser`, data);
-            console.log(data);
-            setSendSucces(true);
+            const response = await axios.post(endpointLink, {
+                username: data.username,
+                password: data.password
+            });
+            login(response.data);
+
         } catch (e) {
             console.error(e);
-            setError(true);
+            if (e.message.includes('400')) {
+                setError('Inloggevens zijn onjuist');
+            } else {
+                setError('Er is iets misgegaan bij het inloggen. Probeer het opnieuw')
+            }
         }
+        toggleLoading(false);
     }
 
     // function keyPressCheck(e){
     //     if (e.keyCode === 13 ){
     //         handleSubmit(onsubmit);
     //     }
-    // }
-
-    // if(setSendSucces){
-    //     go to profilepage...
-    // }
 
     return (
         <>
@@ -48,12 +69,12 @@ function LoginPage() {
                 {/*<Userphoto className="user"/>*/}
                 <form className="login-form" onSubmit={handleSubmit(formSubmit)}>
                     <h2>Login</h2>
-                    <label htmlFor="username-field">E-mailadres*:</label>
+                    <label htmlFor="username-field">Gebruikersnaam*:</label>
                     <input
                         name="username"
                         id="username-field"
-                        type="email"
-                        placeholder="your@e-mail.com"
+                        type="text"
+                        placeholder="gebruikersnaam"
                         ref={register({required: true})}
                     />
                     {errors.username && <p>Gebruikersnaam is verplicht</p>}
@@ -81,17 +102,15 @@ function LoginPage() {
 
                     <button className="login-button"
                             type="submit"
-                        // disabled={errors}
-                    >Inloggen
+                            disabled={loading}
+                    >
+                        Inloggen
                     </button>
-
+                    {error && <p>{error}</p>}
                     <p>Wachtwoord vergeten?</p>
-
                     <p className="create-account" ><Link to="/register"> Registreer je hier!</Link></p>
-
                 </form>
             </div>
-
         </>
     );
 }

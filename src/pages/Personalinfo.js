@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {UserContext} from "../context/UserContext";
+import {AuthContext} from "../context/AuthContext";
 import axios from "axios";
 import Header from "../components/header/Header";
 import {useForm} from "react-hook-form";
@@ -8,7 +8,7 @@ import Member from "../components/member/Member";
 
 function PersonalinfoPage() {
 
-    const { currentUser } = useContext(UserContext);
+    const { currentUser } = useContext(AuthContext);
     const [personalInfo, setPersonalInfo] = useState();
 
     useEffect(() => {

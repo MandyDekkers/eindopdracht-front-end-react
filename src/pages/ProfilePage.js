@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import Header from "../components/header/Header";
 import {useForm} from "react-hook-form";
-import { UserContext } from "../context/UserContext";
+import {AuthContext, useAuthState} from "../context/AuthContext";
 
 
 function ProfilePage() {
@@ -11,8 +11,8 @@ function ProfilePage() {
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(false);
     const { register, handleSubmit, errors } = useForm();
+    const { user } = useAuthState();
 
-    const { currentUser } = useContext(UserContext);
 
     useEffect(() => {
         const token = axios.CancelToken.source();
@@ -48,8 +48,10 @@ function ProfilePage() {
 
         <div >
             <Header />
+            { user && (
+                <h1>Hallo {user.username}</h1>
+            ) }
 
-            <h1>Hello naam user {currentUser.firstName}</h1>
 
             {/*{loading && <p>Loading...</p>}*/}
             {/*{error && <p>Er is iets misgegaan bij het ophalen van je persoonlijke gegevens.</p>}*/}
