@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import Header from "../components/header/Header";
 import {useForm} from "react-hook-form";
-import {AuthContext, useAuthState} from "../context/AuthContext";
+// import {AuthContext, useAuthState} from "../context/AuthContext";
 
 
 function ProfilePage() {
@@ -11,7 +11,7 @@ function ProfilePage() {
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState(false);
     const { register, handleSubmit, errors } = useForm();
-    const { user } = useAuthState();
+    // const { user } = useAuthState();
 
 
     useEffect(() => {
@@ -48,14 +48,12 @@ function ProfilePage() {
 
         <div >
             <Header />
-            { user && (
-                <h1>Hallo {user.username}</h1>
-            ) }
-
+            {/*{ user && (*/}
+            {/*    <h1>Hallo {user.username}!</h1>*/}
+            {/*) }*/}
 
             {/*{loading && <p>Loading...</p>}*/}
             {/*{error && <p>Er is iets misgegaan bij het ophalen van je persoonlijke gegevens.</p>}*/}
-            <h1>ProfilePage</h1>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input ref={register} type="file" name="picture"/>

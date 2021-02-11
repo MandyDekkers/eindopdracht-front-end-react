@@ -1,21 +1,22 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {AuthContext} from "../context/AuthContext";
+// import {AuthContext, useAuthState} from "../context/AuthContext";
 import axios from "axios";
 import Header from "../components/header/Header";
 import {useForm} from "react-hook-form";
 import './PersonalInfo.css';
 import Member from "../components/member/Member";
 
+
 function PersonalinfoPage() {
 
-    const { currentUser } = useContext(AuthContext);
     const [personalInfo, setPersonalInfo] = useState();
+    // const { user } = useAuthState();
 
     useEffect(() => {
 
     async function getPersonalInfo() {
         try {
-            const result = await axios.get(`http://localhost:8080/appuser/${currentUser.id}`);
+            const result = await axios.get(`http://localhost:8080/appuser/`);
             setPersonalInfo(result.data);
             console.log(result.data);
         } catch (error) {
@@ -27,7 +28,7 @@ function PersonalinfoPage() {
         return () => {
         }
 
-    }, [personalInfo]);
+    }, []);
 
     return (
         <>

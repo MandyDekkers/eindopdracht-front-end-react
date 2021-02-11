@@ -1,18 +1,19 @@
 import React from 'react';
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import Member from "../components/member/Member";
-import Searchbar from "../components/searchbar/Searchbar";
-import UpdateMember from "../components/member/UpdateMember";
-import NewLesson from "../components/lesson/NewLesson";
-import LessonAdmin from "../components/lesson/LessonAdmin";
+import Member from "../../components/member/Member";
+import Searchbar from "../../components/searchbar/Searchbar";
+import UpdateMember from "../../components/member/UpdateMember";
+import NewLesson from "../../components/lesson/NewLesson";
+import LessonAdmin from "../../components/lesson/LessonAdmin";
+import HeaderAdmin from "../../components/header/HeaderAdmin";
 
 function AdminPage() {
 
     const [members, setMembers] = useState();
     const [update, setUpdate] = useState(null);
     const [lastName, setLastName] = useState();
-    const [lessons, setLessons] = useState();
+
 
     useEffect(() => {
     getAllMembers();
@@ -67,26 +68,13 @@ function AdminPage() {
 
     }, [lastName]);
 
-    useEffect(() => {
-        getAllLessons();
-    }, [lessons]);
-
-    async function getAllLessons() {
-        try {
-            const result = await axios.get(`http://localhost:8080/lesson`);
-            setLessons(result.data);
-            console.log(result.data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     return (
         <>
+            <HeaderAdmin />
         <div className="allmembers">
             {!update ? (
                 <div>
-                    <h1>Welkom op de beheerdersportal</h1>
+                    <h1>Welkom op de beheerdersportal! </h1>
                     <h1>Alle leden:</h1>
 
                     <Searchbar setLastNameHandler={setLastName}/>
@@ -123,24 +111,6 @@ function AdminPage() {
             />
             )}
         </div>
-
-            <div className="all-lessons">
-
-                <h2>Nieuwe les toevoegen:</h2>
-
-                <NewLesson />
-
-                <h1>Alle lessen:</h1>
-                <div>
-                    { lessons && lessons.map((lesson) => (
-                        <LessonAdmin
-                        key={lesson.id}
-                        lesson={lesson}
-                        getAllLessons={getAllLessons}
-                        />
-                    ))}
-                </div>
-            </div>
           </>
     )
 }

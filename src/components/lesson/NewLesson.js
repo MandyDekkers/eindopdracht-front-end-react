@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import {useForm} from "react-hook-form";
 import axios from "axios";
+import './NewLesson.css';
 
-function NewLesson() {
+function NewLesson( {getAllLessons}) {
 
     const { handleSubmit, register, errors, watch } = useForm();
     const [sendSucces, setSendSucces] = useState(false);
@@ -14,6 +15,7 @@ function NewLesson() {
             const response = await axios.post(`http://localhost:8080/lesson`, data);
             console.log(data);
             setSendSucces(true);
+            getAllLessons();
         } catch (e) {
             console.error(e);
             setError(true);
@@ -23,42 +25,46 @@ function NewLesson() {
     return (
         <>
             <div className="lesson-container">
-                <form className="lesson-from" onSubmit={handleSubmit(onFormSubmit)}>
+                <form className="lesson-form" onSubmit={handleSubmit(onFormSubmit)}>
                     <label htmlFor="kindOfLesson-field">Soort les*:</label>
                     <input
-                        name="lessonName"
+                        name="name"
                         id="kindOfLesson-field"
                         type="text"
+                        placeholder="Fitcamp/Corecamp/Bootcamp"
                         ref={register({required: true})}
                     />
-                    {errors.lessonName && <p>Invoer soort les is verplicht</p>}
-
-                    <label htmlFor="location-field">Locatie*:</label>
-                    <input
-                        type="text"
-                        name="location"
-                        id="location-field"
-                        ref={register({ required: true })}
-                    />
-                    {errors.location && <p>Locatie les is verplicht</p>}
+                    {errors.name && <p>Invoer soort les is verplicht</p>}
 
                     <label htmlFor="date-field">Datum*:</label>
                     <input
                         name="date"
                         id="date-field"
-                        type="date"
-                        ref={register({required: true })}
+                        type="text"
+                        placeholder="Maandag 1 januari 2021, 20:00 uur"
+                        ref={register({required: true})}
                     />
-                    {errors.date && <p>Invoer datum les is verplicht</p>}
+                    {errors.date && <p>Invoer soort les is verplicht</p>}
 
                     <label htmlFor="maxMembers-field">Max. aantal deelnemers*:</label>
                     <input
                         type="tel"
                         id="maxMembers-field"
-                        name="amountMembers"
+                        name="maxAmountMembers"
+                        placeholder="max. 30 deelnemers"
                         ref={register({required: true })}
                     />
-                    {errors.maxAmountOfMembers && <p>Invoer maximaal aantal deelnemers is verplicht</p>}
+                    {errors.maxAmountMembers && <p>Invoer maximaal aantal deelnemers is verplicht</p>}
+
+                    <label htmlFor="location-field">Niveau*:</label>
+                    <input
+                        type="text"
+                        name="niveau"
+                        id="location-field"
+                        placeholder="beginner/gemiddeld/gevorderd"
+                        ref={register({ required: true })}
+                    />
+                    {errors.niveau && <p>Locatie les is verplicht</p>}
 
                     <button type="submit">
                         Opslaan
