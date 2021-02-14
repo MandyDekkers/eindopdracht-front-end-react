@@ -22,3 +22,16 @@
 .intro {
     padding: 30px;
 }
+
+.lessonoverview {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.lessonnewoverview {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+

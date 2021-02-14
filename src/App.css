@@ -2,3 +2,9 @@ img {
     width: 100px;
     margin-right: 16px;
 }
+
+
+.error {
+    color: red;
+    font-size: smaller;
+}

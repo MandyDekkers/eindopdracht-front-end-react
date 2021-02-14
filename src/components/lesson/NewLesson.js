@@ -25,7 +25,6 @@ function NewLesson( {getAllLessons} ) {
     return (
         <>
                 <form className="lesson-form" onSubmit={handleSubmit(onFormSubmit)}>
-                    <h3>Les toevoegen:</h3>
                     <label htmlFor="kindOfLesson-field">Soort les*:</label>
                     <input
                         name="name"
@@ -34,7 +33,7 @@ function NewLesson( {getAllLessons} ) {
                         placeholder="Fitcamp/Corecamp/Bootcamp"
                         ref={register({required: true})}
                     />
-                    {errors.name && <p>Invoer soort les is verplicht</p>}
+                    {errors.name && <p className="error">Invoer soort les is verplicht</p>}
 
                     <label htmlFor="date-field">Datum*:</label>
                     <input
@@ -44,7 +43,7 @@ function NewLesson( {getAllLessons} ) {
                         placeholder="Maandag 1 januari 2021, 20:00 uur"
                         ref={register({required: true})}
                     />
-                    {errors.date && <p>Invoer soort les is verplicht</p>}
+                    {errors.date && <p className="error">Invoer soort les is verplicht</p>}
 
                     <label htmlFor="maxMembers-field">Max. aantal deelnemers*:</label>
                     <input
@@ -54,7 +53,7 @@ function NewLesson( {getAllLessons} ) {
                         placeholder="max. 30 deelnemers"
                         ref={register({required: true })}
                     />
-                    {errors.maxAmountMembers && <p>Invoer maximaal aantal deelnemers is verplicht</p>}
+                    {errors.maxAmountMembers && <p className="error">Invoer maximaal aantal deelnemers is verplicht</p>}
 
                     <label htmlFor="location-field">Niveau*:</label>
                     <input
@@ -64,7 +63,7 @@ function NewLesson( {getAllLessons} ) {
                         placeholder="beginner/gemiddeld/gevorderd"
                         ref={register({ required: true })}
                     />
-                    {errors.niveau && <p>Locatie les is verplicht</p>}
+                    {errors.niveau && <p className="error">Locatie les is verplicht</p>}
 
                     <button className="savenewlesson" type="submit">
                         Opslaan

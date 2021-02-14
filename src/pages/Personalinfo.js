@@ -6,6 +6,8 @@ import {useForm} from "react-hook-form";
 import './PersonalInfo.css';
 import Member from "../components/member/Member";
 import UpdateMember from "../components/member/UpdateMember";
+import user from "../assets/user.png";
+import PageHeader from "../components/header/PageHeader";
 
 
 function PersonalinfoPage() {
@@ -33,19 +35,15 @@ function PersonalinfoPage() {
         <>
         <Header />
             {!updateInfo ? (
-                <div>
-
-            <h3>Jouw persoonlijke gegevens:</h3>
-
+        <div className="personalinfo">
+            <PageHeader icon={user} title="Jouw persoonlijke gegevens" />
             <div>
                 {personalInfo &&
                 <>
-                    <h2>Naam: {personalInfo.firstName} {personalInfo.lastName}</h2>
-                    <h3>E-mail: {personalInfo.email}</h3>
-                    <h3>Straatnaam: {personalInfo.streetName}</h3>
-                    <h3>Huisnummer + toevoeging: {personalInfo.houseNumber}</h3>
-                    <h3>Postcode: {personalInfo.postalCode}</h3>
-                    <h3>Woonplaats: {personalInfo.city}</h3>
+                    <h2>{personalInfo.firstName} {personalInfo.lastName}</h2>
+                    <h3>{personalInfo.email}</h3>
+                    <h3>{personalInfo.streetName} {personalInfo.houseNumber}</h3>
+                    <h3>{personalInfo.postalCode} {personalInfo.city}</h3>
                 </>
                 }
                 <button
@@ -55,7 +53,7 @@ function PersonalinfoPage() {
                     Update gegevens
                 </button>
             </div>
-                </div>
+        </div>
 
                 ) : (
                     <div>

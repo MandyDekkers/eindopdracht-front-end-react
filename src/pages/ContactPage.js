@@ -2,6 +2,8 @@ import React from 'react';
 import './ContactPage.css';
 import Header from "../components/header/Header";
 import {useForm} from "react-hook-form";
+import question from "../assets/question.png";
+import PageHeader from "../components/header/PageHeader";
 
 
 function ContactPage() {
@@ -11,8 +13,9 @@ function ContactPage() {
 
         <div className="contact-container" >
             <Header />
-            <h3>Indien je vragen/opmerkingen of andere zaken wil mededelen, vul onderstaand formulier in!</h3>
-            <form>
+            <PageHeader icon={question} title="Neem contact met ons op" />
+        <div className="contactbox">
+            <form className="contactform">
                 <label htmlFor="firstName-field">Voornaam*:</label>
                 <input
                     // defaultValue={} voornaam automatisch invullen
@@ -53,9 +56,6 @@ function ContactPage() {
                 />
                 {errors.text && <p>Invoer is verplicht</p>}
 
-
-
-
                 <button
                     type="submit"
 
@@ -63,6 +63,7 @@ function ContactPage() {
                     Verstuur
                 </button>
             </form>
+        </div>
         </div>
     );
 }

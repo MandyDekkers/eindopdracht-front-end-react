@@ -38,7 +38,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         type="text"
                         ref={register({required: true})}
                     />
-                    {errors.name && <p>Invoer soort les is verplicht</p>}
+                    {errors.name && <p className="error">Invoer soort les is verplicht</p>}
 
                     <label htmlFor="date-field">Datum:*:</label>
                     <input
@@ -48,7 +48,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         id="date-field"
                         ref={register({ required: true })}
                     />
-                    {errors.date && <p>Locatie les is verplicht</p>}
+                    {errors.date && <p className="error">Locatie les is verplicht</p>}
 
                     <label htmlFor="members-field">Max. aantal deelnemers*:</label>
                     <input
@@ -58,7 +58,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         type="text"
                         ref={register({required: true })}
                     />
-                    {errors.maxAmountMembers && <p>Invoer datum les is verplicht</p>}
+                    {errors.maxAmountMembers && <p className="error">Invoer datum les is verplicht</p>}
 
                     <label htmlFor="maxMembers-field">Niveau*:</label>
                     <input
@@ -68,7 +68,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         name="niveau"
                         ref={register({required: true })}
                     />
-                    {errors.niveau && <p>Invoer maximaal aantal deelnemers is verplicht</p>}
+                    {errors.niveau && <p className="error">Invoer maximaal aantal deelnemers is verplicht</p>}
 
                     <button className="saveupdatedlesson" type="submit">
                         Opslaan

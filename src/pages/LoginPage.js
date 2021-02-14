@@ -80,7 +80,7 @@
 //                         placeholder="gebruikersnaam"
 //                         ref={register({required: true})}
 //                     />
-//                     {errors.username && <p>Gebruikersnaam is verplicht</p>}
+//                     {errors.username && <p className="error">Gebruikersnaam is verplicht</p>}
 //
 //                     <label htmlFor="password-field">Wachtwoord*:</label>
 //                     <input

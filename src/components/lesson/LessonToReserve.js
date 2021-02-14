@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from "axios";
 import { useForm } from 'react-hook-form';
 import LessonMade from "./LessonMade";
+import './LessonToReserve.css'
 
 function LessonToReserve( { lesson, getReservedLessons }) {
 
@@ -23,12 +24,11 @@ function LessonToReserve( { lesson, getReservedLessons }) {
 
     return (
         <>
-           <form className="register-form" onSubmit={handleSubmit(onFormSubmit)}>
-
-                <h2>Naam: {lesson.name}</h2>
-                <h3>Datum: {lesson.date}</h3>
-                <h3>Max. aantal deelnemers: {lesson.maxAmountMembers}</h3>
-                <h3>Niveau: {lesson.niveau} </h3>
+           <form className="toreserve" onSubmit={handleSubmit(onFormSubmit)}>
+                <h4>{lesson.name}</h4>
+                <h4>{lesson.date}</h4>
+                <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
+                <h4>Niveau: {lesson.niveau} </h4>
 
                 <label htmlFor="comment-field">Opmerking:</label>
                 <input
@@ -39,7 +39,7 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                 />
 
                 <button
-                    className="reserve-lesson"
+                    className="reservebutton"
                     type="submit"
                 >
                     Reserveer!

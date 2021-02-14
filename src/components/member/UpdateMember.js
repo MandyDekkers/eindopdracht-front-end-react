@@ -34,7 +34,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({required: true})}
                     />
-                    {errors.firstName && <p>Invoer voornaam is verplicht</p>}
+                    {errors.firstName && <p className="error">Invoer voornaam is verplicht</p>}
 
                     <label htmlFor="lastname-field">Achternaam*:</label>
                     <input
@@ -44,7 +44,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         id="lastname-field"
                         ref={register({ required: true })}
                     />
-                    {errors.lastName && <p>Invoer achternaam is verplicht</p>}
+                    {errors.lastName && <p className="error">Invoer achternaam is verplicht</p>}
 
                     <label htmlFor="emailaddress-field">E-mailadres*:</label>
                     <input
@@ -54,7 +54,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({required: true, validate: (value) => value.includes('@'),})}
                     />
-                    {errors.email && <p>Invoer e-mailadres is verplicht</p>}
+                    {errors.email && <p className="error">Voer een juist e-mailadres in</p>}
 
                     <label htmlFor="streetname-field">Straatnaam*:</label>
                     <input
@@ -64,7 +64,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({ required: true })}
                     />
-                    {errors.streetName && <p>Invoer straatnaam is verplicht</p>}
+                    {errors.streetName && <p className="error">Invoer straatnaam is verplicht</p>}
 
                     <label htmlFor="housenumber-field">Huisnummer + toevoeging*:</label>
                     <input
@@ -74,7 +74,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="tel"
                         ref={register({ required: true })}
                     />
-                    {errors.houseNumber && <p>Invoer huisnummer is verplicht</p>}
+                    {errors.houseNumber && <p className="error">Invoer huisnummer is verplicht</p>}
 
                     <label htmlFor="postalCode-field">Postcode*:</label>
                     <input
@@ -84,7 +84,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({required: true, pattern: /^[0-9]{4}[a-zA-Z]{2}$/})}
                     />
-                    {errors.postalCode && <p>Postcode is niet juist</p>}
+                    {errors.postalCode && <p className="error">Postcode is niet juist</p>}
 
                     <label htmlFor="city-field">Woonplaats*:</label>
                     <input
@@ -95,7 +95,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({ required: true })}
                     />
-                    {errors.city && <p>Invoer woonplaats is verplicht</p>}
+                    {errors.city && <p className="error">Invoer woonplaats is verplicht</p>}
 
                     <button className="savebutton" type="submit">
                         Opslaan

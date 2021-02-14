@@ -28,6 +28,7 @@
 
 .savebutton {
     margin-top: 15px;
+    width: 100px;
 }
 
 .close {
@@ -36,4 +37,5 @@
     right: 10px;
     top: 10px;
 }
+
 

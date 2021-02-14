@@ -1,0 +1,15 @@
+.ownlessons {
+    padding: 25px;
+    border-style: solid;
+    border-width: 1px;
+    width: 330px;
+    height: 200px;
+    margin: 10px;
+    background: rgba(0,0,0,0.1);
+}
+
+.les {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+}

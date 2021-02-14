@@ -3,8 +3,6 @@
     flex-direction: column;
 }
 
-p {
-    padding-bottom: 20px;
-    padding-left: 30px;
+.columns {
+    padding: 30px;
 }
-

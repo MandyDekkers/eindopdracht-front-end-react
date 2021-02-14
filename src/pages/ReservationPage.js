@@ -4,6 +4,9 @@ import axios from "axios";
 import LessonAdmin from "../components/lesson/LessonAdmin";
 import LessonToReserve from "../components/lesson/LessonToReserve";
 import LessonMade from "../components/lesson/LessonMade";
+import PageHeader from "../components/header/PageHeader";
+import sport from "../assets/sport.png";
+import './ReservationPage.css'
 
 
 function ReservationPage() {
@@ -41,29 +44,32 @@ function ReservationPage() {
 
     return (
     <>
-        <Header/>
-        <h2>Mijn gereserveerde lessen:</h2>
-        <div className="reservedlessons">
+        <div className="cont">
+            <Header/>
+            <PageHeader icon={sport} title="Reserveer een les!" />
+            <h3 className="lessonoverview">Gereserveerde lessen:</h3>
+
+        <div className="les">
             {lessonReserved && lessonReserved.map((lesson) => (
                 <>
-                    <h2>Naam: {lesson.name}</h2>
-                    <h3>Datum: {lesson.date}</h3>
-                    <h3>Max. aantal deelnemers: {lesson.maxAmountMembers}</h3>
-                    <h3>Niveau: {lesson.niveau} </h3>
-                    <h3>Opmerking: {lesson.comment} </h3>
+                    <div className="ownlessons">
+                    <h3>{lesson.name}</h3>
+                    <h4>{lesson.date}</h4>
+                    <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
+                    <h4>Niveau: {lesson.niveau} </h4>
+                    <h4>Opmerking: {lesson.comment} </h4>
                     <button
-                        className="delete-lesson"
+                        className="reservebutton"
                         type="submit"
                     >
                         Verwijder!
                     </button>
+                    </div>
                 </>
             ))}
         </div>
-
-
+    <h3 className="lessonoverview">Lessen:</h3>
         <div className="lessons">
-            <h2>Reserveer een les:</h2>
             {lessons && lessons.map((lesson) => (
             <LessonToReserve
                 key={lesson.id}
@@ -72,6 +78,7 @@ function ReservationPage() {
             />
             ))}
         </div>
+</div>
     </>
     )
 }

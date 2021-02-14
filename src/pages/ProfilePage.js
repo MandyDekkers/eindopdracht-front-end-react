@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import Header from "../components/header/Header";
 import {useForm} from "react-hook-form";
+import welcome from "../assets/welcome.png";
+import PageHeader from "../components/header/PageHeader";
 // import {AuthContext, useAuthState} from "../context/AuthContext";
 
 
@@ -48,6 +50,7 @@ function ProfilePage() {
 
         <div >
             <Header />
+            <PageHeader icon={welcome} title="Welkom"/>
             {/*{ user && (*/}
             {/*    <h1>Hallo {user.username}!</h1>*/}
             {/*) }*/}
