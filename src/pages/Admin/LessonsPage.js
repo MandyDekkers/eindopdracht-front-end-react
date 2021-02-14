@@ -4,7 +4,9 @@ import NewLesson from "../../components/lesson/NewLesson";
 import LessonAdmin from "../../components/lesson/LessonAdmin";
 import axios from "axios";
 import UpdateLesson from "../../components/lesson/UpdateLesson";
-import Lesson from "../Admin/Lesson.css"
+import Lesson from "./LessonsPage.css"
+import PageHeader from "../../components/header/PageHeader";
+import sport from "../../assets/sport.png";
 
 function LessonsPage() {
     const [lessons, setLessons] = useState();
@@ -28,13 +30,17 @@ function LessonsPage() {
 <>
     <HeaderAdmin />
     {!updateLesson ? (
+
         <div className="all-lessons">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolorum inventore quas reiciendis sunt veritatis? Accusantium aperiam atque, blanditiis facere harum illo ipsa minima minus officia perspiciatis sit vel voluptatibus?</p>
-            <h2>Nieuwe les toevoegen:</h2>
-            <NewLesson
+            <PageHeader icon={sport} title="Lessenoverzicht" />
+            <p className="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam expedita fuga, fugit ratione sunt voluptatibus? Cumque doloribus expedita fuga quis repellendus repudiandae veniam voluptates. Blanditiis dolorem, doloremque dolores enim esse et impedit ipsa iusto laudantium magnam, maxime nam non, praesentium quasi sed similique sint ut vero. Accusamus ad aliquid corporis distinctio laborum quibusdam soluta vel veritatis? Assumenda deserunt, dolorem ea eum exercitationem, laudantium repellat saepe sequi sit totam unde veniam voluptatem. Adipisci, dicta illum labore perspiciatis qui quo vitae. Consequatur fugit, labore molestiae perspiciatis quas voluptas voluptate voluptatum. Blanditiis consequuntur facere impedit ipsam minima molestiae nisi nostrum odit quaerat veniam.</p>
+
+            <div className="add-lesson">
+                <NewLesson
                 getAllLessons={getAllLessons}
-            />
-            <h1>Alle lessen:</h1>
+                />
+            </div>
+
             <div className="lessons">
                 {lessons && lessons.map((lesson) => (
                     <LessonAdmin
@@ -52,7 +58,6 @@ function LessonsPage() {
                 lesson={lessons[lessons.findIndex(lesson => lesson.id === updateLesson)]}
                 setUpdateLesson={setUpdateLesson}
                 getAllLessons={getAllLessons}
-
             />
         </div>
     )}

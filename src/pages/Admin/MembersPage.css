@@ -1,0 +1,51 @@
+.members {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.lastname {
+    display: flex;
+    justify-content: center;
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.searchbar input {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 6px;
+}
+
+.searchbutton {
+    width: 60px;
+}
+
+.member-details {
+    padding: 25px;
+    border-style: solid;
+    border-width: 1px;
+    width: 330px;
+    height: 200px;
+    margin: 10px;
+    background: rgba(0,0,0,0.1);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 15px;
+}
+
+button {
+    padding: 2px;
+}
+
+
+

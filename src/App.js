@@ -12,6 +12,7 @@ import {useAuthState} from "./context/AuthContext";
 import PrivateRoute from "./components/privateroute/PrivateRoute";
 import LessonsPage from "./pages/Admin/LessonsPage";
 import MembersPage from "./pages/Admin/MembersPage";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
@@ -93,7 +94,7 @@ function App() {
                     {/*</PrivateRoute>*/}
 
                 </Switch>
-               {/*<Footer />*/}
+               <Footer />
       </Router>
   );
 }

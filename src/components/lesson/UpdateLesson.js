@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
+import './UpdateLesson.css'
 
 function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
 
@@ -20,10 +21,9 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
 
     return (
         <>
-            <button onClick={() => setUpdateLesson(0)} type="button" className="close">X</button>
-
             <div className="lesson-box">
                 <form className="lesson-form" onSubmit={handleSubmit(onFormSubmit)}>
+                    <button onClick={() => setUpdateLesson(0)} type="button" className="closelesson">X</button>
 
                     <label htmlFor="lesson-id"> Id:</label>
                     <input type="text" readOnly defaultValue={lesson.id}
@@ -70,7 +70,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                     />
                     {errors.niveau && <p>Invoer maximaal aantal deelnemers is verplicht</p>}
 
-                    <button type="submit">
+                    <button className="saveupdatedlesson" type="submit">
                         Opslaan
                     </button>
                 </form>

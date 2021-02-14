@@ -4,14 +4,15 @@ import axios from "axios";
 import Searchbar from "../../components/searchbar/Searchbar";
 import Member from "../../components/member/Member";
 import UpdateMember from "../../components/member/UpdateMember";
-import UpdateLesson from "../../components/lesson/UpdateLesson";
-import LessonAdmin from "../../components/lesson/LessonAdmin";
+import './MembersPage.css'
+import teamwork from '../../assets/teamwork.svg'
+import PageHeader from "../../components/header/PageHeader";
 
 function MembersPage() {
     const [members, setMembers] = useState();
     const [lastName, setLastName] = useState();
+    const [test, setTest] = useState();
     const [updateMember, setUpdateMember] = useState(null);
-
 
     useEffect(() => {
         getAllMembers();
@@ -28,11 +29,10 @@ function MembersPage() {
     }
 
     useEffect(() => {
-
         async function getMemberByLastname() {
             try {
                 const result = await axios.get(`http://localhost:8080/appuser/lastname/${lastName}`);
-                setLastName(result.data);
+                setTest(result.data);
                 console.log(result.data);
             } catch (error) {
                 console.error(error);
@@ -46,23 +46,24 @@ function MembersPage() {
     }, [lastName]);
 
     return (
-<>
-        <HeaderAdmin />
-    {!updateMember ? (
-            <div className="allmembers">
-                <h1>Alle leden:</h1>
+<>                <HeaderAdmin />
+            {!updateMember ? (
+            <div className="all-members">
+                <PageHeader icon={teamwork} title="Ledenoverzicht" />
+
                 <Searchbar setLastNameHandler={setLastName}/>
-                <div>
-                    {lastName &&
+
+                <div className="lastname">
+                    {test && test.map((test) => (
                         <Member
-                            key={lastName.id}
-                            member={lastName}
+                            key={test.id}
+                            member={test}
                             getAllMembers={getAllMembers}
                             setUpdateMember={setUpdateMember}
                         />
-                    }
+                    ))}
                 </div>
-                <div className="client-container">
+                <div className="members">
                     {members && members.map((member) => (
                         <Member
                             key={member.id}
@@ -74,11 +75,14 @@ function MembersPage() {
                 </div>
             </div>
     ) : (
+
+
         <UpdateMember
-            member={members[members.findIndex(lesson => lesson.id === updateMember)]}
+            member={members[members.findIndex(member => member.id === updateMember)]}
             setUpdateMember={setUpdateMember}
-            getAllMembers={getAllMembers()}
+            getAllMembers={getAllMembers}
         />
+
         )}
 </>
     );

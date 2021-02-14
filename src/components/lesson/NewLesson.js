@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import './NewLesson.css';
 
-function NewLesson( {getAllLessons}) {
+function NewLesson( {getAllLessons} ) {
 
     const { handleSubmit, register, errors, watch } = useForm();
     const [sendSucces, setSendSucces] = useState(false);
@@ -24,8 +24,8 @@ function NewLesson( {getAllLessons}) {
 
     return (
         <>
-            <div className="lesson-container">
                 <form className="lesson-form" onSubmit={handleSubmit(onFormSubmit)}>
+                    <h3>Les toevoegen:</h3>
                     <label htmlFor="kindOfLesson-field">Soort les*:</label>
                     <input
                         name="name"
@@ -66,12 +66,11 @@ function NewLesson( {getAllLessons}) {
                     />
                     {errors.niveau && <p>Locatie les is verplicht</p>}
 
-                    <button type="submit">
+                    <button className="savenewlesson" type="submit">
                         Opslaan
                     </button>
                 </form>
                 {error && <p>Er is iets misgegaan bij het opslaan van deze les.</p>}
-            </div>
         </>
 
     )

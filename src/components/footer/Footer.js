@@ -5,10 +5,9 @@ import './Footer.css';
 function Footer() {
     return (
         <div className="footer" >
-            <ul>Algemene voorwaarden</ul>
-            <ul>Algemene voorwaarden</ul>
-            <ul>Algemene voorwaarden</ul>
-
+            <div>Thanks voor visiting!</div>
+            <div>Conditions and terms</div>
+            <div>Be fit!</div>
         </div>
     );
 }

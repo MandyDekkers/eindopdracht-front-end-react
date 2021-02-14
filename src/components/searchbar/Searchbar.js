@@ -15,7 +15,7 @@ function Searchbar({ setLastNameHandler }) {
     }
 
     return (
-        <span className="searchbar">
+        <div className="searchbar">
             <input
                 type="text"
                 name="search"
@@ -25,12 +25,13 @@ function Searchbar({ setLastNameHandler }) {
                 placeholder="Zoek op achternaam lid."
              />
         <button
+            className="searchbutton"
             type="button"
             onClick={handleClick}
         >
             Zoek
         </button>
-        </span>
+        </div>
     );
 }
 

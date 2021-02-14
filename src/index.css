@@ -26,11 +26,4 @@
         border-bottom: 2px solid black;
     }
 
-    .member-container {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-    }
-
 }

@@ -1,0 +1,39 @@
+.update-container {
+    display: flex;
+    justify-content: center;
+}
+
+.member-form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px;
+    padding: 15px;
+    width: 300px;
+    margin: 25px;
+}
+
+.member-form label {
+    margin: 4px 0;
+    font-weight: bold;
+}
+
+.member-form input {
+    width: 100%;
+    padding: 2px 6px;
+    margin: 2px 0;
+}
+
+.savebutton {
+    margin-top: 15px;
+}
+
+.close {
+    position: absolute;
+    width: 25px;
+    right: 10px;
+    top: 10px;
+}
+

@@ -1,116 +1,21 @@
 import React from 'react';
-import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import Member from "../../components/member/Member";
-import Searchbar from "../../components/searchbar/Searchbar";
-import UpdateMember from "../../components/member/UpdateMember";
-import NewLesson from "../../components/lesson/NewLesson";
-import LessonAdmin from "../../components/lesson/LessonAdmin";
+import './AdminPage.css'
+
 import HeaderAdmin from "../../components/header/HeaderAdmin";
+import PageHeader from "../../components/header/PageHeader";
+import welcome from "../../assets/welcome.png"
 
 function AdminPage() {
-
-    const [members, setMembers] = useState();
-    const [update, setUpdate] = useState(null);
-    const [lastName, setLastName] = useState();
-
-
-    useEffect(() => {
-    getAllMembers();
-    }, []);
-
-        async function getAllMembers() {
-            try {
-                const result = await axios.get(`http://localhost:8080/appuser`);
-                setMembers(result.data);
-                console.log(result.data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        async function deleteMember(id) {
-            try {
-                const result = await axios.delete(`http://localhost:8080/appuser/${id}`);
-                console.log('axios result: ', result);
-                getAllMembers();
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-    async function updateMember(data) {
-        try {
-            const response = await axios.post(`http://localhost:8080/appuser/${data.id}`, data);
-            console.log('axios result: ', response);
-            setUpdate(null);
-            getAllMembers();
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    useEffect(() => {
-
-        async function getMemberByLastname() {
-            try {
-                const result = await axios.get(`http://localhost:8080/appuser/lastname/${lastName}`);
-                setLastName(result.data);
-                console.log(result.data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        if(lastName) {
-            getMemberByLastname();
-        }
-
-    }, [lastName]);
 
     return (
         <>
             <HeaderAdmin />
-        <div className="allmembers">
-            {!update ? (
-                <div>
-                    <h1>Welkom op de beheerdersportal! </h1>
-                    <h1>Alle leden:</h1>
-
-                    <Searchbar setLastNameHandler={setLastName}/>
-                    <div>
-                        {lastName &&
-                        <>
-                            <Member
-                                key={lastName.id}
-                                member={lastName}
-                                deleteMember={deleteMember}
-                                setUpdate={setUpdate}
-                            />
-                        </>
-                        }
-
-                    </div>
-                    <div className="client-container">
-                        {members && members.map((member) => (
-                            <Member
-                                key={member.id}
-                                member={member}
-                                deleteMember={deleteMember}
-                                setUpdate={setUpdate}
-                            />
-                        ))}
-                    </div>
+                <div className="adminhomepage">
+                    <PageHeader icon={welcome} title="Welkom op de beheerderportaal!" />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa delectus dolorem explicabo itaque iusto laboriosam laudantium praesentium, ullam voluptatem? Consequatur deleniti ducimus enim ex facilis harum iste laboriosam laborum magni minus mollitia nemo neque nisi numquam pariatur quia quidem repudiandae, suscipit temporibus ullam vel veniam vero vitae voluptates voluptatibus. Exercitationem molestias nisi odio officiis qui quibusdam saepe veniam voluptatem! Dolores inventore iste iusto laboriosam numquam perferendis quo quod vero vitae voluptate. Adipisci aliquid autem consequatur culpa, eaque eum facere inventore itaque laborum magnam mollitia nesciunt nulla numquam rerum sint soluta totam voluptas? Aspernatur, eos eveniet hic ipsa nemo ullam voluptas.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam corporis, deserunt, earum harum labore nam nobis obcaecati perferendis quae sapiente voluptatem! Distinctio eaque et hic magnam magni maxime minus omnis reprehenderit velit! Aliquid aut dolor officia quod! Excepturi iusto laudantium odio pariatur unde! Atque, earum maxime! Adipisci alias, aliquam culpa cum, eligendi error, hic pariatur placeat qui quod sit sunt vel vitae voluptatem voluptates? Accusamus distinctio in libero officiis, pariatur suscipit temporibus. Aspernatur consectetur, delectus doloremque facere in incidunt modi necessitatibus nisi, pariatur perferendis quae reprehenderit rerum voluptatibus? Accusantium ad assumenda autem beatae blanditiis debitis deleniti distinctio dolor doloribus ex, exercitationem explicabo fugiat in incidunt ipsum labore laboriosam laborum minima modi, nemo nisi optio perferendis placeat quaerat quas quisquam soluta sunt voluptas voluptate voluptates! Assumenda deserunt earum nemo nobis nostrum provident, quis quo suscipit. Accusamus adipisci aliquid aperiam iste, minima minus nam nesciunt veritatis? A culpa eius hic incidunt, ratione soluta vitae. Animi distinctio id impedit laborum minus nostrum nulla reiciendis, totam veniam veritatis. Adipisci alias aspernatur cumque explicabo ipsa magni natus totam voluptas? A accusantium aliquam autem corporis deleniti, dolorem ducimus eius eligendi, enim eum fugiat hic in inventore ipsam labore laborum libero modi nemo nihil non odit placeat quam quia quod rem repellendus sapiente similique sint temporibus tenetur totam veniam voluptas voluptatibus! Ab ad amet assumenda, consectetur corporis cum delectus ducimus eaque excepturi facere facilis ipsum labore pariatur quas recusandae tenetur ullam! Alias aut distinctio ea et minima natus praesentium sit temporibus vel voluptates? Doloremque, eius, laudantium?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto dolorum excepturi exercitationem ipsa iste laboriosam minima necessitatibus nostrum, pariatur quia repudiandae saepe sequi, similique tempora vel voluptatibus? Accusantium debitis magni numquam quia sed sunt totam vel vero! A, aliquid aspernatur assumenda autem debitis dicta dignissimos, distinctio doloremque eaque eveniet fuga fugiat illo incidunt ipsam ipsum iste itaque laborum, minus molestiae molestias natus non odio odit officia quaerat quas quasi qui quia quibusdam quos ratione similique sit voluptas. Deleniti, explicabo soluta. Aliquid consectetur consequuntur cupiditate delectus, dolorum enim excepturi fugit iste natus nobis non possimus quam quibusdam ratione rerum totam vel. Adipisci debitis facere facilis molestiae. Autem cupiditate doloribus excepturi in iure, minus pariatur quas voluptate? Aliquid amet aspernatur, blanditiis consequatur dolorem earum excepturi explicabo illo in inventore iure minus molestias, natus nihil nobis officiis provident quam quas quisquam reiciendis repellendus saepe sapiente tempore vel, velit veritatis vitae voluptatibus. Illo.</p>
                 </div>
-
-            ) : (
-            <UpdateMember
-                member={members[members.findIndex(member => member.id === update)]}
-                updateMember={updateMember}
-                setUpdate={setUpdate}
-            />
-            )}
-        </div>
           </>
     )
 }

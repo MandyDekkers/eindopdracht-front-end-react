@@ -31,6 +31,9 @@
 //
 //     useEffect( () => {
 //         if (isAuthenticated === true) {
+//                 if(isAdmin) {
+//                     history.push("/Admin")
+//                 }
 //             history.push('/profile');
 //         }
 //         console.log(isAuthenticated);

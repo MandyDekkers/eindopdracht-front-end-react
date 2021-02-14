@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import axios from "axios";
-import UpdateLesson from "./UpdateLesson";
 
 function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
 
@@ -18,12 +17,13 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
         <>
         <div key={lesson.id} className="lesson-details">
 
-            <h1>Id: {lesson.id}</h1>
-            <h2>Naam: {lesson.name}</h2>
-            <h3>Datum: {lesson.date}</h3>
-            <h3>Max. aantal deelnemers: {lesson.maxAmountMembers}</h3>
-            <h3>Niveau: {lesson.niveau} </h3>
+            <h4>Lesnummer: {lesson.id}</h4>
+            <h3>{lesson.name}</h3>
+            <h4>{lesson.date}</h4>
+            <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
+            <h4>Niveau: {lesson.niveau} </h4>
 
+            <div className="buttons">
             <button
                 className="update-lesson"
                 onClick={() => setUpdateLesson(lesson.id)}
@@ -37,8 +37,9 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
                 onClick={() => deleteLesson(lesson.id)}
                 type="submit"
             >
-            Verwijder les
+                Verwijder les
             </button>
+            </div>
             </div>
         </>
     )
