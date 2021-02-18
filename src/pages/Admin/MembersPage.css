@@ -34,13 +34,15 @@
     width: 330px;
     height: 200px;
     margin: 10px;
-    background: rgba(0,0,0,0.1);
+    /*background: rgba(0,0,0,0.1);*/
+    background-color: rosybrown;
 }
 
 .buttons {
     display: flex;
     justify-content: space-evenly;
     padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 button {

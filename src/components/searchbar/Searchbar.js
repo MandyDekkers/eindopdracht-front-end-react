@@ -22,7 +22,7 @@ function Searchbar({ setLastNameHandler }) {
                 value={query}
                 onKeyDown={keyPressCheck}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Zoek op achternaam lid."
+                placeholder="Zoek op achternaam lid"
              />
         <button
             className="searchbutton"

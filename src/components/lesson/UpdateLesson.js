@@ -78,7 +78,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         ref={register({required: true })}
                     />
                     {errors.niveau && <p className="error">Invoer niveau is verplicht</p>}
-
+                <div className="buttonsave">
                     <button
                         className="saveupdatedlesson"
                         type="submit"
@@ -86,6 +86,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                     >
                         {loading ? 'Laden...' : 'Opslaan'}
                     </button>
+                </div>
                 </form>
                 {error && <p>Er is iets misgegaan bij het wijzigen van deze les.</p>}
             </div>

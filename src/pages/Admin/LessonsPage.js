@@ -11,6 +11,7 @@ import sport from "../../assets/sport.png";
 function LessonsPage() {
     const [lessons, setLessons] = useState();
     const [updateLesson, setUpdateLesson] = useState(null);
+
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
 
@@ -77,6 +78,10 @@ function LessonsPage() {
             />
         </div>
     )}
+
+    {
+
+    }
 </>
     );
 }

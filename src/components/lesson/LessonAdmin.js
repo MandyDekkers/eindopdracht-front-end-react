@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from "axios";
 
 function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
 
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
+    const [lessonmembers, setLessonmembers] = useState(null);
 
     async function deleteLesson() {
         toggleLoading(true);
@@ -24,6 +25,27 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
         toggleLoading(false);
     }
 
+    useEffect(() => {
+    async function getMembersPerLesson() {
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
+        try {
+            const result = await axios.get(`http://localhost:8080/lesson/${lesson.id}/appusers`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            setLessonmembers(result.data);
+        } catch (error) {
+            setError('Er is iets misgegaan bij het ophalen van de data')
+        }
+        toggleLoading(false);
+    }
+    getMembersPerLesson();
+}, []);
+
     return (
         <>
         <div key={lesson.id} className="lesson-details">
@@ -34,6 +56,7 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
             <h4>Niveau: {lesson.niveau} </h4>
 
             <div className="buttons">
+
             <button
                 className="update-lesson"
                 onClick={() => setUpdateLesson(lesson.id)}
@@ -51,6 +74,14 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
             >
                 {loading ? 'Laden...' : 'Verwijder'}
             </button>
+                {error && <p className="message-error">{error}</p>}
+            </div>
+
+            <h4>Reeds ingeschreven:</h4>
+            <div className="membersperlesson">
+                {lessonmembers && lessonmembers.map((lessonmember) => (
+                    <h5>{lessonmember.firstName} {lessonmember.lastName}</h5>
+                ))}
                 {error && <p className="message-error">{error}</p>}
             </div>
         </div>

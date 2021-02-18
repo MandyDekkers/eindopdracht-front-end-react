@@ -70,7 +70,12 @@ function PersonalinfoPage() {
                 <input
                     type="file"
                     name="photo"
+                    id="photo"
                 />
+                <div className="image-preview">
+                    <img src="" alt="Image preview" className="image-preview__image"/>
+                    <span className="image-preview__defaul-tesxt">Image Preview</span>
+                </div>
                 <button
                 type="submit"
                 disabled={loading}

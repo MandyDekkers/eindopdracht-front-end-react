@@ -6,20 +6,22 @@
         padding: 0;
         box-sizing: border-box;
         font-family: 'Quicksand', 'Arial', sans-serif;
-        /*background: url("achtergrond-afbeelding.jpg") no-repeat;*/
-        /*background-size: cover;*/
-        /*opacity: 0.5;*/
     }
+
+    /*body {*/
+    /*    background: url("achtergrond-afbeelding.jpg") no-repeat top center;*/
+    /*    background-size: cover;*/
+    /*}*/
 
     a,
     a:visited,
     a:hover {
-        color: black;
+        color: white;
         text-decoration: none;
     }
 
     .active-link {
-        border-bottom: 2px solid black;
+        border-bottom: 3px solid white;
     }
 
 }

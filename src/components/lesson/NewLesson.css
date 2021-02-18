@@ -5,7 +5,8 @@
     border-width: 1px;
     padding: 30px;
     width: 300px;
-    background: rgba(0,0,0,0.1);
+    /*background: rgba(0,0,0,0.1);*/
+    background-color: rosybrown;
 }
 
 .lesson-form label {

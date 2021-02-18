@@ -1,5 +1,7 @@
 .create-account {
+    font-size: smaller;
     cursor: pointer;
+    padding-top: 10px;
 }
 
 .login-container {
@@ -11,15 +13,10 @@
 
 .login-form {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    padding: 50px;
+    padding: 40px;
     background: rgba(0,0,0,0.4);
 }
-
-/*.login-form label {*/
-
-/*}*/
 
 .login-form input {
     width: 100%;
