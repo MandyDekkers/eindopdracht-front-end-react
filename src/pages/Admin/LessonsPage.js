@@ -11,19 +11,34 @@ import sport from "../../assets/sport.png";
 function LessonsPage() {
     const [lessons, setLessons] = useState();
     const [updateLesson, setUpdateLesson] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
+        const token = axios.CancelToken.source();
         getAllLessons();
+        return () => {
+            token.cancel('Operation canceled by user.');
+        }
     }, []);
 
     async function getAllLessons() {
+        toggleLoading(true);
+        setError('');
         try {
-            const result = await axios.get(`http://localhost:8080/lesson`);
+            const token = localStorage.getItem('token');
+            const result = await axios.get(`http://localhost:8080/lesson`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setLessons(result.data);
             console.log(result.data);
-        } catch (error) {
-            console.error(error);
+        } catch (e) {
+            setError('Er is iets misgegaan bij het ophalen van de lessen')
         }
+        toggleLoading(false);
     }
 
     return (
@@ -51,6 +66,7 @@ function LessonsPage() {
                     />
                 ))}
             </div>
+            {error && <p className="message-error">{error}</p>}
         </div>
     ) : (
         <div>

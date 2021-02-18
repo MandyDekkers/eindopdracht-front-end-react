@@ -5,16 +5,16 @@ import './Header.css';
 import {AuthContext, useAuthState} from "../../context/AuthContext";
 
 function HeaderAdmin(){
-    // const history = useHistory();
+    const history = useHistory();
 
-    // const { isAuthenticated } = useAuthState();
-    // const { logout } = useContext(AuthContext);
-    //
-    // useEffect(() => {
-    //     if (isAuthenticated === false) {
-    //         history.push('/login');
-    //     }
-    // }, [isAuthenticated]);
+    const { isAuthenticated } = useAuthState();
+    const { logout } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (isAuthenticated === false) {
+            history.push('/login');
+        }
+    }, [isAuthenticated]);
 
     return (
         <nav>
@@ -24,10 +24,10 @@ function HeaderAdmin(){
                     <NavLink exact to="/admin" activeClassName="active-link">Home</NavLink>
                     <NavLink to="/members" activeClassName="active-link">Leden</NavLink>
                     <NavLink to="/lessons" activeClassName="active-link">Lessen</NavLink>
-                    {/*<div onClick={() => logout()}*/}
-                    {/*>*/}
-                    {/*    <Logout className="log-out-icon" />*/}
-                    {/*</div>*/}
+                    <div onClick={() => logout()}
+                    >
+                        <Logout className="log-out-icon" />
+                    </div>
                 </ul>
             </div>
         </nav>

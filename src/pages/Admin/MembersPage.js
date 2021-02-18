@@ -13,30 +13,50 @@ function MembersPage() {
     const [lastName, setLastName] = useState();
     const [test, setTest] = useState();
     const [updateMember, setUpdateMember] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
         getAllMembers();
     }, []);
 
     async function getAllMembers() {
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const result = await axios.get(`http://localhost:8080/appuser`);
+            const result = await axios.get(`http://localhost:8080/appuser`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setMembers(result.data);
             console.log(result.data);
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het ophalen van de gegevens')
         }
+        toggleLoading(false);
     }
 
     useEffect(() => {
         async function getMemberByLastname() {
+            toggleLoading(true);
+            setError('');
+            const token = localStorage.getItem('token');
             try {
-                const result = await axios.get(`http://localhost:8080/appuser/lastname/${lastName}`);
+                const result = await axios.get(`http://localhost:8080/appuser/lastname/${lastName}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
                 setTest(result.data);
                 console.log(result.data);
             } catch (error) {
-                console.error(error);
+                setError('Er is iets misgegaan bij het ophalen van de gegevens')
             }
+            toggleLoading(false);
         }
 
         if(lastName) {
@@ -72,17 +92,18 @@ function MembersPage() {
                             setUpdateMember={setUpdateMember}
                         />
                     ))}
+                    {error && <p className="message-error">{error}</p>}
+                    {loading && <p>Aan het laden...</p>}
                 </div>
             </div>
     ) : (
-
-
+        <div>
         <UpdateMember
             member={members[members.findIndex(member => member.id === updateMember)]}
             setUpdateMember={setUpdateMember}
             getAllMembers={getAllMembers}
         />
-
+        </div>
         )}
 </>
     );

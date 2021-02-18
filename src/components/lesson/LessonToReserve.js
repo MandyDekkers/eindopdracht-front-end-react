@@ -3,28 +3,40 @@ import axios from "axios";
 import { useForm } from 'react-hook-form';
 import LessonMade from "./LessonMade";
 import './LessonToReserve.css'
+import {useAuthState} from "../../context/AuthContext";
 
 function LessonToReserve( { lesson, getReservedLessons }) {
 
     const { handleSubmit, register, errors } = useForm();
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
+    const { user } = useAuthState();
 
     async function onFormSubmit(data) {
-
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const response = await axios.post(`http://localhost:8080/appuser/2/lesson/5`, {
+            const response = await axios.post(`http://localhost:8080/appuser/${user.id}/lesson/${lesson.id}`, {
                 comment: data.comment
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
             });
             getReservedLessons();
             console.log(response.data);
 
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het versturen van de data')
         }
+        toggleLoading(false);
     }
 
     return (
         <>
-           <form className="toreserve" onSubmit={handleSubmit(onFormSubmit)}>
+            <form className="toreserve" onSubmit={handleSubmit(onFormSubmit)}>
                 <h4>{lesson.name}</h4>
                 <h4>{lesson.date}</h4>
                 <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
@@ -41,12 +53,13 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                 <button
                     className="reservebutton"
                     type="submit"
+                    disabled={loading}
                 >
-                    Reserveer!
+                    {loading ? 'Laden...' : 'Reserveer'}
                 </button>
-
+                {error && <p className="message-error">{error}</p>}
            </form>
-        </>
+                    </>
     )
 }
 

@@ -1,17 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from "axios";
 
 function Member({ member, getAllMembers, setUpdateMember }) {
 
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     async function deleteMember(id) {
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const result = await axios.delete(`http://localhost:8080/appuser/${id}`);
+            const result = await axios.delete(`http://localhost:8080/appuser/${member.id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             console.log(result);
             getAllMembers();
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het verwijderen van het lid')
         }
+        toggleLoading(false);
     }
 
     return (
@@ -39,10 +50,12 @@ function Member({ member, getAllMembers, setUpdateMember }) {
                 className="delete-member"
                 onClick={() => deleteMember(member.id)}
                 type="submit"
+                disabled={loading}
                 >
-                Verwijder
+                {loading ? 'Laden...' : 'Verwijder'}
                 </button>
             </div>
+            {error && <p className="message-error">{error}</p>}
 
         </div>
         </>

@@ -1,31 +1,42 @@
 import React, {useEffect, useState} from 'react';
 import Header from "../components/header/Header";
 import axios from "axios";
-import LessonAdmin from "../components/lesson/LessonAdmin";
 import LessonToReserve from "../components/lesson/LessonToReserve";
-import LessonMade from "../components/lesson/LessonMade";
 import PageHeader from "../components/header/PageHeader";
 import sport from "../assets/sport.png";
 import './ReservationPage.css'
+import {useAuthState} from "../context/AuthContext";
 
 
 function ReservationPage() {
 
     const [lessons, setLessons] = useState();
     const [lessonReserved, setLessonReserved] = useState();
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
+    const { user } = useAuthState();
 
     useEffect(() => {
         getAllLessons();
     }, []);
 
     async function getAllLessons() {
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const result = await axios.get(`http://localhost:8080/lesson`);
+            const result = await axios.get(`http://localhost:8080/lesson`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setLessons(result.data);
-            console.log(result.data);
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het ophalen van de data')
         }
+        toggleLoading(false);
+
     }
 
     useEffect(() => {
@@ -33,13 +44,22 @@ function ReservationPage() {
     }, []);
 
     async function getReservedLessons(){
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const result = await axios.get('http://localhost:8080/appuser/2/lessons');
+            const result = await axios.get(`http://localhost:8080/appuser/${user.id}/lessons`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setLessonReserved(result.data);
             console.log(result.data);
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het ophalen van de data')
         }
+        toggleLoading(false);
     }
 
     return (
@@ -61,12 +81,14 @@ function ReservationPage() {
                     <button
                         className="reservebutton"
                         type="submit"
+                        disabled={loading}
                     >
-                        Verwijder!
+                        {loading ? 'Laden...' : 'Vewijder'}
                     </button>
                     </div>
                 </>
             ))}
+
         </div>
     <h3 className="lessonoverview">Lessen:</h3>
         <div className="lessons">
@@ -78,6 +100,7 @@ function ReservationPage() {
             />
             ))}
         </div>
+            {error && <p className="message-error">{error}</p>}
 </div>
     </>
     )

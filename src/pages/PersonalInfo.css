@@ -19,3 +19,13 @@
     align-items: center;
     padding-bottom: 50px;
 }
+
+.sendphoto {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.update {
+    margin-top: 10px;
+}

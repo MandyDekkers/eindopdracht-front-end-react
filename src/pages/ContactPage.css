@@ -1,3 +1,8 @@
+.contactbox {
+    display: flex;
+    justify-content: center;
+}
+
 .contactform {
     display: flex;
     flex-direction: column;
@@ -9,7 +14,12 @@
     margin: 25px;
 }
 
-.contactbox {
-    display: flex;
-    justify-content: center;
+.contactform label {
+    margin: 4px 0;
+    font-weight: bold;
 }
+
+.send {
+    margin-top: 15px;
+}
+

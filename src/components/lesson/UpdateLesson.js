@@ -6,17 +6,26 @@ import './UpdateLesson.css'
 function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
 
     const { handleSubmit, register, errors } = useForm();
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     async function onFormSubmit(data) {
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const result = await axios.put(`http://localhost:8080/lesson/${lesson.id}`, data);
-            console.log(result);
+            const result = await axios.put(`http://localhost:8080/lesson/${lesson.id}`, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setUpdateLesson(null);
             getAllLessons();
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het wijzigen van de les')
         }
-        console.log(data);
+        toggleLoading(false);
     }
 
     return (
@@ -40,15 +49,15 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                     />
                     {errors.name && <p className="error">Invoer soort les is verplicht</p>}
 
-                    <label htmlFor="date-field">Datum:*:</label>
+                    <label htmlFor="date-field">Datum*:</label>
                     <input
                         defaultValue={lesson.date}
-                        type="text"
                         name="date"
                         id="date-field"
-                        ref={register({ required: true })}
+                        type="text"
+                        ref={register({required: true})}
                     />
-                    {errors.date && <p className="error">Locatie les is verplicht</p>}
+                    {errors.name && <p className="error">Invoer datum is verplicht</p>}
 
                     <label htmlFor="members-field">Max. aantal deelnemers*:</label>
                     <input
@@ -58,7 +67,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         type="text"
                         ref={register({required: true })}
                     />
-                    {errors.maxAmountMembers && <p className="error">Invoer datum les is verplicht</p>}
+                    {errors.maxAmountMembers && <p className="error">Invoer aantal deelnemers les is verplicht</p>}
 
                     <label htmlFor="maxMembers-field">Niveau*:</label>
                     <input
@@ -68,12 +77,17 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         name="niveau"
                         ref={register({required: true })}
                     />
-                    {errors.niveau && <p className="error">Invoer maximaal aantal deelnemers is verplicht</p>}
+                    {errors.niveau && <p className="error">Invoer niveau is verplicht</p>}
 
-                    <button className="saveupdatedlesson" type="submit">
-                        Opslaan
+                    <button
+                        className="saveupdatedlesson"
+                        type="submit"
+                        disabled={loading}
+                    >
+                        {loading ? 'Laden...' : 'Opslaan'}
                     </button>
                 </form>
+                {error && <p>Er is iets misgegaan bij het wijzigen van deze les.</p>}
             </div>
         </>
     );

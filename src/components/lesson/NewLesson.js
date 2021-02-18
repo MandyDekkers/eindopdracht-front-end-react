@@ -7,19 +7,27 @@ function NewLesson( {getAllLessons} ) {
 
     const { handleSubmit, register, errors, watch } = useForm();
     const [sendSucces, setSendSucces] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     async function onFormSubmit(data) {
-        setError(false);
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const response = await axios.post(`http://localhost:8080/lesson`, data);
-            console.log(data);
+            const response = await axios.post(`http://localhost:8080/lesson`, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setSendSucces(true);
             getAllLessons();
         } catch (e) {
             console.error(e);
-            setError(true);
+            setError('Er is iets misgegaan bij het versturen')
         }
+        toggleLoading(false);
     }
 
     return (
@@ -65,9 +73,14 @@ function NewLesson( {getAllLessons} ) {
                     />
                     {errors.niveau && <p className="error">Locatie les is verplicht</p>}
 
-                    <button className="savenewlesson" type="submit">
-                        Opslaan
+                    <button
+                        className="savenewlesson"
+                        type="submit"
+                        disabled={loading}
+                    >
+                        {loading ? 'Laden...' : 'Opslaan'}
                     </button>
+                    {error && <p className="message-error">{error}</p>}
                 </form>
                 {error && <p>Er is iets misgegaan bij het opslaan van deze les.</p>}
         </>

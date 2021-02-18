@@ -6,3 +6,11 @@
 .columns {
     padding: 30px;
 }
+
+.admininfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}

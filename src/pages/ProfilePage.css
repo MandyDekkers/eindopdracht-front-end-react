@@ -1,0 +1,11 @@
+.memberinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.introtekst {
+    padding-top: 35px
+;
+}

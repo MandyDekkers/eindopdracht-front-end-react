@@ -14,6 +14,12 @@
     background: rgba(0,0,0,0.4);
 }
 
+.succesmessage {
+    display: flex;
+    justify-content: center;
+    color: green;
+}
+
 /*.test {*/
 /*    width: 150px;*/
 /*    height: 150px;*/

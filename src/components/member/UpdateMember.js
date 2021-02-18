@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
 import './UpdateMember.css'
@@ -6,16 +6,26 @@ import './UpdateMember.css'
 function UpdateMember({ member, setUpdateMember, getAllMembers }) {
 
     const { handleSubmit, register, errors } = useForm();
+    const [error, setError] = useState('');
+    const [loading, toggleLoading] = useState(false);
 
     async function onFormSubmit(data) {
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
         try {
-            const result = await axios.put(`http://localhost:8080/appuser/${member.id}`, data);
-            console.log(result);
+            const result = await axios.put(`http://localhost:8080/appuser/${member.id}`, data , {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
             setUpdateMember(null);
+            getAllMembers();
         } catch (error) {
-            console.error(error);
+            setError('Er is iets misgegaan bij het wijzigen van de gegevens')
         }
-        console.log(data);
+        toggleLoading(false);
     }
     return (
         <>
@@ -97,10 +107,15 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                     />
                     {errors.city && <p className="error">Invoer woonplaats is verplicht</p>}
 
-                    <button className="savebutton" type="submit">
-                        Opslaan
+                    <button
+                        className="savebutton"
+                        type="submit"
+                        disabled={loading}
+                        >
+                        {loading ? 'Laden...' : 'Opslaan'}
                     </button>
                 </form>
+                {error && <p className="message-error">{error}</p>}
             </div>
         </>
     );

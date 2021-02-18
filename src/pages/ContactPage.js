@@ -56,7 +56,7 @@ function ContactPage() {
                 />
                 {errors.text && <p>Invoer is verplicht</p>}
 
-                <button
+                <button className="send"
                     type="submit"
 
                 >

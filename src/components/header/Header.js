@@ -6,16 +6,16 @@ import './Header.css';
 
 
 function Header(){
-    // const history = useHistory();
-    //
-    // const { isAuthenticated } = useAuthState();
-    // const { logout } = useContext(AuthContext);
-    //
-    // useEffect(() => {
-    //     if (isAuthenticated === false) {
-    //         history.push('/login');
-    //     }
-    // }, [isAuthenticated]);
+    const history = useHistory();
+
+    const { isAuthenticated } = useAuthState();
+    const { logout } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (isAuthenticated === false) {
+            history.push('/login');
+        }
+    }, [isAuthenticated]);
 
 return (
         <nav>
@@ -26,10 +26,10 @@ return (
                     <NavLink to="/personalinfo" activeClassName="active-link">Mijn gegevens</NavLink>
                     <NavLink to="/reservation" activeClassName="active-link">Reserveren</NavLink>
                     <NavLink to="/contact" activeClassName="active-link">Contact</NavLink>
-                    {/*<div onClick={() => logout()}*/}
-                    {/*>*/}
-                    {/*    <Logout className="log-out-icon" />*/}
-                    {/*</div>*/}
+                    <div onClick={() => logout()}
+                    >
+                        <Logout className="log-out-icon" />
+                    </div>
                 </ul>
             </div>
         </nav>
