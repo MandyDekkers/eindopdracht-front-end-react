@@ -20,7 +20,7 @@ function Header(){
 return (
         <nav>
             <div className="nav-container">
-                <div className="logo-button"><Link to="/profile"><h1>BEDRIJFSLOGO</h1></Link></div>
+                <div className="logo-button"><Link to="/profile">BEDRIJFSLOGO</Link></div>
                 <ul>
                     <NavLink exact to="/profile" activeClassName="active-link">Home</NavLink>
                     <NavLink to="/personalinfo" activeClassName="active-link">Mijn gegevens</NavLink>

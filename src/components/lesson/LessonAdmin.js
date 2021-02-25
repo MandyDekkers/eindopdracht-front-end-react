@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
+import './LessonAdmin.css'
 
 function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
 
@@ -58,7 +59,7 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
             <div className="buttons">
 
             <button
-                className="update-lesson"
+                className="button-update-delete-member"
                 onClick={() => setUpdateLesson(lesson.id)}
                 disabled={loading}
                 type="submit"
@@ -67,7 +68,7 @@ function LessonAdmin({ lesson, getAllLessons, setUpdateLesson }) {
               </button>
 
             <button
-                className="delete-lesson"
+                className="button-update-delete-member"
                 onClick={() => deleteLesson(lesson.id)}
                 type="submit"
                 disabled={loading}

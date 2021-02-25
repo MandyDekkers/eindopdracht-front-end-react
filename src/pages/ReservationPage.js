@@ -36,7 +36,6 @@ function ReservationPage() {
             setError('Er is iets misgegaan bij het ophalen van de data')
         }
         toggleLoading(false);
-
     }
 
     useEffect(() => {
@@ -69,7 +68,7 @@ function ReservationPage() {
             <PageHeader icon={sport} title="Reserveer een les!" />
             <h3 className="lessonoverview">Gereserveerde lessen:</h3>
 
-        <div className="les">
+        <div className="lessonmade">
             {lessonReserved && lessonReserved.map((lesson) => (
                 <>
                     <div className="ownlessons">
@@ -78,13 +77,7 @@ function ReservationPage() {
                     <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
                     <h4>Niveau: {lesson.niveau} </h4>
                     <h4>Opmerking: {lesson.comment} </h4>
-                    <button
-                        className="reservebutton"
-                        type="submit"
-                        disabled={loading}
-                    >
-                        {loading ? 'Laden...' : 'Vewijder'}
-                    </button>
+                    <h4 className="plannedlesson">Leuk dat je aan deze les meedoet!</h4>
                     </div>
                 </>
             ))}

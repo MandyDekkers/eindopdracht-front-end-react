@@ -3,8 +3,8 @@
 }
 
 .log-out-icon {
-    width: 32px;
-    height: 32px;
+    width: 27px;
+    height: 27px;
 }
 
 .nav-container {
@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    background-color: rosybrown;
+    background-color: rgba(0,134,139, 0.8);
 }
 
 nav {
@@ -34,13 +34,19 @@ ul {
     font-size: 20px;
 }
 
-h1{
-    color: black;
+.logo-button {
+    color: white;
+    font-weight: bold;
+    font-size: larger;
 }
 
-p {
+a,
+a:visited,
+a:hover {
     color: black;
+    text-decoration: none;
 }
 
-
-
+.active-link {
+    border-bottom: 3px solid black;
+}

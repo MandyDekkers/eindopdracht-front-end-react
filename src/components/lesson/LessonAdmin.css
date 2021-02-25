@@ -1,0 +1,19 @@
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.button-update-delete-member {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 2px;
+    color: white;
+    padding: 6px;
+}
+
+.button-update-delete-member:hover {
+    opacity: 0.5;
+}

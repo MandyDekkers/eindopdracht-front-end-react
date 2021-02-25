@@ -5,12 +5,18 @@
     width: 330px;
     height: 200px;
     margin: 10px;
-    /*background: rgba(0,0,0,0.1);*/
-    background-color: rosybrown;
+    background-color: rgba(0,134,139, 0.8);
+    color: white;
 }
 
-.les {
+.lessonmade {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 30px;
+    padding: 35px;
+}
+
+.plannedlesson {
+    margin-top: 25px;
 }

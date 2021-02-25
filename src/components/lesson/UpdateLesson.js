@@ -34,7 +34,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                 <form className="lesson-form" onSubmit={handleSubmit(onFormSubmit)}>
                     <button onClick={() => setUpdateLesson(0)} type="button" className="closelesson">X</button>
 
-                    <label htmlFor="lesson-id"> Id:</label>
+                    <label htmlFor="lesson-id"> Lesnummer:</label>
                     <input type="text" readOnly defaultValue={lesson.id}
                            name="id"
                            />

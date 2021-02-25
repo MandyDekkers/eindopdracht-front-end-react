@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import './Searchbar.css';
 
 function Searchbar({ setLastNameHandler }) {
     const [query, setQuery] = useState('');
@@ -16,16 +17,17 @@ function Searchbar({ setLastNameHandler }) {
 
     return (
         <div className="searchbar">
+            <h4 className="inputlastname">Zoek op achternaam:</h4>
             <input
                 type="text"
                 name="search"
                 value={query}
                 onKeyDown={keyPressCheck}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Zoek op achternaam lid"
+                placeholder="Vul een achternaam in"
              />
         <button
-            className="searchbutton"
+            className="lastname-button"
             type="button"
             onClick={handleClick}
         >

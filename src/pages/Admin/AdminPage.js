@@ -14,7 +14,7 @@ function AdminPage() {
         <>
             <HeaderAdmin />
                 <div className="adminhomepage">
-                    <PageHeader icon={welcome} title="Welkom op de beheerderportaal!" />
+                    <PageHeader icon={welcome} title="" />
                     <div className="admininfo">
                         <h4>Username: {user.username}</h4>
                         <h4>Email: {user.email}</h4>

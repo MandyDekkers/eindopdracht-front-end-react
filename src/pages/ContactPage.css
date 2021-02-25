@@ -12,14 +12,33 @@
     padding: 15px;
     width: 300px;
     margin: 25px;
+    background-color: rgba(0,134,139, 0.8);
 }
 
 .contactform label {
     margin: 4px 0;
     font-weight: bold;
+    color: white;
+}
+
+.contactform textarea {
+    background-color: transparent;
+    border-color: white;
+}
+
+.sendbutton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .send {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 2px;
+    color: white;
+    padding: 6px;
     margin-top: 15px;
+    width: 85px;
 }
 

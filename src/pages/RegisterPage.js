@@ -7,7 +7,7 @@ import './LoginPage';
 import { Link } from 'react-router-dom';
 
 function RegisterPage() {
-    const { handleSubmit, register, errors, watch } = useForm();
+    const { handleSubmit, register, errors } = useForm();
     const [sendSucces, setSendSucces] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState('');
@@ -33,7 +33,7 @@ function RegisterPage() {
         } catch (e) {
             console.error(e);
             if (e.message.includes('400')) {
-                setError('Er bestaal al een acount met deze gebruikersnaam');
+                setError('Er bestaal al een acount met deze gebruikersnaam en /of emailadres');
             } else {
                 setError('Er is iets misgegaan bij het verzenden. Probeer het opnieuw')
             }
@@ -43,8 +43,9 @@ function RegisterPage() {
 
     return (
         <>
-            {sendSucces && <p className="succesmessage">Je bent succesvol geregistreerd, klik  <Link to="/login">hier</Link>  om in te loggen.</p>}
-            <div className="register-box">
+
+
+            <div className="register-container">
                 <form className="register-form" onSubmit={handleSubmit(onFormSubmit)}>
                     <label htmlFor="firstname-field">Voornaam*:</label>
                         <input
@@ -53,7 +54,7 @@ function RegisterPage() {
                         type="text"
                         ref={register({required: true})}
                         />
-                        {errors.firstName && <p className="error">Invoer voornaam is verplicht</p>}
+                        {errors.firstName && <p className="error-register">Invoer voornaam is verplicht</p>}
 
                     <label htmlFor="lastname-field">Achternaam*:</label>
                         <input
@@ -62,16 +63,17 @@ function RegisterPage() {
                         id="lastname-field"
                         ref={register({ required: true })}
                         />
-                        {errors.lastName && <p className="error">Invoer achternaam is verplicht</p>}
+                        {errors.lastName && <p className="error-register">Invoer achternaam is verplicht</p>}
 
                     <label htmlFor="lastname-field">Gebruikersnaam*:</label>
                     <input
                         type="text"
                         name="username"
                         id="username-field"
+                        placeholder="min. 8 karakters"
                         ref={register({ required: true })}
                     />
-                    {errors.lastName && <p className="error">Invoer achternaam is verplicht</p>}
+                    {errors.lastName && <p className="error-register">Invoer gebruikersnaam is verplicht</p>}
 
                     <label htmlFor="emailaddress-field">E-mailadres*:</label>
                         <input
@@ -80,7 +82,7 @@ function RegisterPage() {
                         type="text"
                         ref={register({required: true, validate: (value) => value.includes('@'),})}
                         />
-                        {errors.email && <p className="error">Invoer e-mailadres is verplicht</p>}
+                        {errors.email && <p className="error-register">Invoer e-mailadres is verplicht</p>}
 
                     <label htmlFor="password">Wachtwoord*:</label>
                     <input
@@ -89,10 +91,8 @@ function RegisterPage() {
                         name="password"
                         id="password-field"
                         ref={register(
-                            {
-                                required: {
-                                    value: true,
-                                    message: 'Dit veld mag niet leeg zijn',
+                            {required: {
+                                    value: true
                                 },
                                 minLength: {
                                     value: 8,
@@ -101,59 +101,57 @@ function RegisterPage() {
                             }
                         )}
                     />
-                    {errors.password && errors.password.message}
+                    {errors.password && <p className="error-register">Invoer wachtwoord is verplicht</p>}
 
-                    <label htmlFor="streetname-field">Straatnaam:</label>
+                    <label htmlFor="streetname-field">Straatnaam*:</label>
                     <input
                         name="streetName"
                         id="streetname-field"
                         type="text"
                         ref={register({ required: true })}
                     />
-                    {errors.streetName && <p className="error">Invoer straatnaam is verplicht</p>}
+                    {errors.streetName && <p className="error-register">Invoer straatnaam is verplicht</p>}
 
-                    <label htmlFor="housenumber-field">Huisnummer + toevoeging:</label>
+                    <label htmlFor="housenumber-field">Huisnummer + toevoeging*:</label>
                     <input
                         name="houseNumber"
                         id="housenumber-field"
                         type="tel"
                         ref={register({ required: true })}
                     />
-                    {errors.houseNumber && <p className="error">Invoer huisnummer is verplicht</p>}
+                    {errors.houseNumber && <p className="error-register">Invoer huisnummer is verplicht</p>}
 
-                    <label htmlFor="postalCode-field">Postcode</label>
+                    <label htmlFor="postalCode-field">Postcode*:</label>
                     <input
                         name="postalCode"
                         id="zipcode-field"
                         type="text"
+                        placeholder="1234AB"
                         ref={register({required: true, pattern: /^[0-9]{4}[a-zA-Z]{2}$/})}
                     />
-                    {errors.postalCode && <p className="error">Postcode is niet juist</p>}
+                    {errors.postalCode && <p className="error-register">Postcode is niet juist</p>}
 
-                    <label htmlFor="city-field">Woonplaats:</label>
+                    <label htmlFor="city-field">Woonplaats*:</label>
                     <input
                         name="city"
                         id="city-field"
                         type="text"
                         ref={register({ required: true })}
                     />
-                    {errors.city && <p className="error">Invoer woonplaats is verplicht</p>}
+                    {errors.city && <p className="error-register">Invoer woonplaats is verplicht</p>}
 
-                    {/*<label htmlFor="termsandconditions-field">Ik ga akkoord met de algemene voorwaarden.</label>*/}
-                    {/*<input*/}
-                    {/*    name="termsAndConditions"*/}
-                    {/*    id="termsandconditions-field"*/}
-                    {/*    type="checkbox"*/}
-                    {/*    ref={register({ required: true })}*/}
-                    {/*/>*/}
-
+                    <div className="login-button-container">
                     <button
+                        className="register-button"
                         type="submit"
                         disabled={loading}
+
                     >
-                        {loading ? 'Loading...' : 'Maakt account aan'}
+                        {loading ? 'Loading...' : 'Maak account aan'}
                     </button>
-                    {error && <p className="error">{error}</p>}
+                    </div>
+                    {error && <p className="error-register-from">{error}</p>}
+                    {sendSucces && <p className="succesmessage">Je bent succesvol geregistreerd, klik  <Link to="/login">hier</Link>  om in te loggen.</p>}
                 </form>
             </div>
         </>

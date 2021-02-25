@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -8,19 +8,16 @@ import ReservationPage from "./pages/ReservationPage";
 import ContactPage from "./pages/ContactPage";
 import AdminPage from "./pages/Admin/AdminPage";
 import PersonalInfo from "./pages/Personalinfo";
-import {useAuthState} from "./context/AuthContext";
 import PrivateRoute from "./components/privateroute/PrivateRoute";
 import LessonsPage from "./pages/Admin/LessonsPage";
 import MembersPage from "./pages/Admin/MembersPage";
-import Footer from "./components/footer/Footer";
-
 
 function App() {
 
   return (
       <Router>
           <Switch>
-              <Route path="/login">
+              <Route exact path="/login">
                   <LoginPage />
               </Route>
               <Route path="/register">

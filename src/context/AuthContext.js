@@ -23,14 +23,14 @@ function AuthContextProvider( { children }){
                         },
                     }
                 );
-                console.log(response);
+                console.log("test222", response);
                 // met het resultaat vullen we de context
                 setAuthState({
                     ...authState,
                     user: {
-                        id: response.id,
-                        username: response.username,
-                        email: response.email,
+                        id: response.data.id,
+                        username: response.data.username,
+                        email: response.data.email,
                     },
                     status: 'done',
                 });

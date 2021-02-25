@@ -1,23 +1,75 @@
-.register-box {
-    /*background-color: darkorange;*/
-    min-height: 100vh;
+.register-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .register-form {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    padding: 32px;
-    background: rgba(0,0,0,0.4);
+    justify-content: space-between;
+    padding: 40px;
+    background: rgba(255,255,255,0.4);
+    color: black;
+    width: 325px;
+    height: 900px;
+    border-radius: 2px;
+    border: 2px solid grey;
 }
 
-.succesmessage {
+.register-form input {
+    width: 100%;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid grey;
+    background: transparent;
+    height: 30px;
+    outline: none;
+    color: grey;
+
+}
+
+.login-button-container {
     display: flex;
+    align-items: center;
     justify-content: center;
-    color: green;
+    margin-top: 15px;
+}
+
+.register-button {
+    background: transparent;
+    border: 1px solid grey;
+    border-radius: 2px;
+    color: grey;
+    margin-top: 10px;
+    padding: 6px;
+}
+
+.register-button:hover {
+    opacity: 0.5;
+}
+
+.error-register {
+    color: darkred;
+    font-size: 11px;
+    padding-bottom: 15px;
+}
+
+.error-register-from {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    color: darkred;
+    font-size: 11px;
+    padding-top: 15px;
+
+}
+.succesmessage {
+    color: white;
+    font-size: 13px;
+    padding-top: 15px;
 }
 
 /*.test {*/

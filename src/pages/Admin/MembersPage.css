@@ -23,31 +23,4 @@
     margin-bottom: 6px;
 }
 
-.searchbutton {
-    width: 60px;
-}
-
-.member-details {
-    padding: 25px;
-    border-style: solid;
-    border-width: 1px;
-    width: 330px;
-    height: 200px;
-    margin: 10px;
-    /*background: rgba(0,0,0,0.1);*/
-    background-color: rosybrown;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-button {
-    padding: 2px;
-}
-
-
 

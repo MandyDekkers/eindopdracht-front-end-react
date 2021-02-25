@@ -5,7 +5,7 @@ import './NewLesson.css';
 
 function NewLesson( {getAllLessons} ) {
 
-    const { handleSubmit, register, errors, watch } = useForm();
+    const { handleSubmit, register, errors } = useForm();
     const [sendSucces, setSendSucces] = useState(false);
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
@@ -58,7 +58,7 @@ function NewLesson( {getAllLessons} ) {
                         type="tel"
                         id="maxMembers-field"
                         name="maxAmountMembers"
-                        placeholder="max. 30 deelnemers"
+                        placeholder="max. 5 deelnemers"
                         ref={register({required: true })}
                     />
                     {errors.maxAmountMembers && <p className="error">Invoer maximaal aantal deelnemers is verplicht</p>}
@@ -72,7 +72,7 @@ function NewLesson( {getAllLessons} ) {
                         ref={register({ required: true })}
                     />
                     {errors.niveau && <p className="error">Locatie les is verplicht</p>}
-
+<div className="save-button-new-lesson">
                     <button
                         className="savenewlesson"
                         type="submit"
@@ -80,6 +80,7 @@ function NewLesson( {getAllLessons} ) {
                     >
                         {loading ? 'Laden...' : 'Opslaan'}
                     </button>
+</div>
                     {error && <p className="message-error">{error}</p>}
                 </form>
                 {error && <p>Er is iets misgegaan bij het opslaan van deze les.</p>}

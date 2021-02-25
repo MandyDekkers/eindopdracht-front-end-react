@@ -4,9 +4,9 @@ import NewLesson from "../../components/lesson/NewLesson";
 import LessonAdmin from "../../components/lesson/LessonAdmin";
 import axios from "axios";
 import UpdateLesson from "../../components/lesson/UpdateLesson";
-import Lesson from "./LessonsPage.css"
 import PageHeader from "../../components/header/PageHeader";
 import sport from "../../assets/sport.png";
+import './LessonsPage.css'
 
 function LessonsPage() {
     const [lessons, setLessons] = useState();

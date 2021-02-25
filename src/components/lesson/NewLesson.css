@@ -1,25 +1,47 @@
 .lesson-form {
     display: flex;
     flex-direction: column;
-    border-style: solid;
+    border-style: solid 1px;
     border-width: 1px;
     padding: 30px;
     width: 300px;
-    /*background: rgba(0,0,0,0.1);*/
-    background-color: rosybrown;
+    background-color: rgba(0,134,139, 0.8);
+    border-radius: 2px;
 }
 
 .lesson-form label {
     margin: 4px 0;
     font-weight: bold;
+    color: white;
 }
 
 .lesson-form input {
     width: 100%;
     padding: 4px 8px;
     margin: 6px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
 }
 
 .savenewlesson {
     margin-top: 15px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 2px;
+    color: white;
+    padding: 6px;
+    width: 80px;
 }
+
+.savenewlesson:hover {
+    opacity: 0.5;
+}
+
+.save-button-new-lesson {
+    display: flex;
+    justify-content: center;
+}
+
+

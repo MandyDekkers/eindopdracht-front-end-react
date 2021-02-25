@@ -41,7 +41,7 @@ function LoginPage() {
             if (e.message.includes('400')) {
                 setError('Inloggevens zijn onjuist');
             } else {
-                setError('Er is iets misgegaan bij het inloggen. Probeer het opnieuw')
+                setError('Probeer het opnieuw!')
             }
         }
         toggleLoading(false);
@@ -49,49 +49,40 @@ function LoginPage() {
 
     return (
         <>
-            {error && <p className="error">{error}</p>}
             <div className="login-container">
 
                 <form className="login-form" onSubmit={handleSubmit(formSubmit)}>
-                    <h3>Login</h3>
+
                     <label htmlFor="username-field">Gebruikersnaam*:</label>
                     <input
                         name="username"
                         id="username-field"
                         type="text"
-                        placeholder="gebruikersnaam"
+                        placeholder="Jouw gebruikersnaam"
                         ref={register({required: true})}
                     />
-                    {errors.username && <p className="error">Gebruikersnaam is verplicht</p>}
+                    {errors.username && <p className="error-inlog">GEBRUIKERSNAAM ONTBREEKT</p>}
 
                     <label htmlFor="password-field">Wachtwoord*:</label>
                     <input
                         type="password"
-                        placeholder="min. 8 karakters"
+                        placeholder="Jouw wachtwoord"
                         name="password"
                         id="password-field"
-                        ref={register(
-                            {
-                                required: {
-                                    value: true,
-                                    message: 'Dit veld mag niet leeg zijn',
-                                },
-                                minLength: {
-                                    value: 8,
-                                    message: 'Min. 8 karakters',
-                                },
-                            }
-                        )}
+                        ref={register({required: true})}
                     />
-                    {errors.password && errors.password.message}
-
+                    {errors.password && <p className="error-inlog">WACHTWOORD ONTBREEKT</p>}
+                <div className="login-button-container">
                     <button className="login-button"
                             type="submit"
                             disabled={loading}
                     >
                         {loading ? 'Laden...' : 'Inloggen'}
                     </button>
+                </div>
+
                     <p className="create-account" ><Link to="/register"> Nieuw? Registreer je hier!</Link></p>
+
                 </form>
             </div>
         </>

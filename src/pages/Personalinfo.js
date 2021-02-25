@@ -1,25 +1,86 @@
 import React, {useContext, useEffect, useState} from 'react';
-// import {AuthContext, useAuthState} from "../context/AuthContext";
 import axios from "axios";
 import Header from "../components/header/Header";
-import {useForm} from "react-hook-form";
 import './PersonalInfo.css';
-import Member from "../components/member/Member";
 import UpdateMember from "../components/member/UpdateMember";
 import USER from "../assets/user.png"
 import PageHeader from "../components/header/PageHeader";
 import {useAuthState} from "../context/AuthContext";
 
-
-
 function PersonalinfoPage() {
 
-    const {handleSubmit, register, errors} = useForm();
     const [personalInfo, setPersonalInfo] = useState();
     const [updateInfo, setUpdateInfo] = useState(null);
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
     const { user } = useAuthState();
+
+    const [image, setImage] = useState("");
+    const [image1, setImage1] = useState("");
+
+    async function uploadImage(e) {
+
+        const file = e.target.files[0];
+        const MYSTRING = await convertBase64(file)
+        console.log(MYSTRING);
+        setImage(MYSTRING);
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.post('http://localhost:8080/appuser/image', {
+                image: MYSTRING,
+                    username: user.username,
+                    email: user.email,
+
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+        } catch (e) {
+            setError('error bij het ophalen data')
+        }
+    }
+
+    useEffect(() => {
+    async function getImage() {
+        try {
+            const token = localStorage.getItem('token');
+            const result = await axios.get(`http://localhost:8080/appuser/${user.id}`, {
+                username: user.username,
+                image: user.image
+            },{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            setImage1(result.data);
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+        getImage();
+
+    }, []);
+
+    const convertBase64 = (file) => {
+
+        return new Promise((resolve, reject) => {
+
+            const fileReader= new FileReader()
+            fileReader.readAsDataURL(file)
+            fileReader.onload = ( () => {
+
+                resolve(fileReader.result);
+
+            });
+            fileReader.onerror = ((error) => {
+                reject(error);
+            });
+        });
+    }
 
     useEffect(() => {
 
@@ -35,7 +96,7 @@ function PersonalinfoPage() {
                 }
             });
             setPersonalInfo(result.data);
-            console.log(result.data);
+            // console.log(result.data);
         } catch (error) {
             setError('Er is iets misgegaan bij het ophalen van de data')
         }
@@ -45,46 +106,32 @@ function PersonalinfoPage() {
 
     }, [updateInfo]);
 
-    async function formSubmit(data) {
-        toggleLoading(true);
-        setError('');
 
-        try {
-            const response = await axios.post('http://localhost:8080/api/auth/signin', {
-                username: data.username,
-                password: data.password
-            });
-        } catch (e) {
-        }
-        toggleLoading(false);
-    }
 
     return (
         <>
-        <Header />
-            {!updateInfo ? (
-        <div className="personalinfo">
-            <PageHeader icon={USER} title="Jouw persoonlijke gegevens" />
+            <Header />
+                {!updateInfo ? (
+                     <div className="personalinfo">
+                        <PageHeader icon={USER} title="Jouw persoonlijke gegevens" />
 
-            <form className="sendphoto" onSubmit={handleSubmit(formSubmit)}>
-                <input
-                    type="file"
-                    name="photo"
-                    id="photo"
-                />
-                <div className="image-preview">
-                    <img src="" alt="Image preview" className="image-preview__image"/>
-                    <span className="image-preview__defaul-tesxt">Image Preview</span>
-                </div>
-                <button
-                type="submit"
-                disabled={loading}
-                >
-                    {loading ? 'Laden...' : 'Verstuur'}
-                </button>
-            </form>
+                        {image1 &&
+                            <div className="photo-border">
+                                <img src={image1.image} alt="photo" className="photo"/>
+                            </div>
+                        }
 
-            <div>
+                            <div className="file-upload">
+                                <input
+                                    className="fileinput"
+                                    type="file"
+                                    onChange={(e) => {
+                                    uploadImage(e);
+                        }}
+         />
+                            </div>
+
+            <div className="userinfo">
                 {personalInfo &&
                 <>
                     <h4>Lidnummer: {personalInfo.id}</h4>
@@ -95,14 +142,17 @@ function PersonalinfoPage() {
                 </>
                 }
                 {error && <p className="message-error">{error}</p>}
+
+                <div className="placebutton">
                 <button
-                    className="update"
+                    className="update-button-member"
                     onClick={() => setUpdateInfo(personalInfo)}
                     type="submit"
                     disabled={loading}
                 >
                     {loading ? 'Laden...' : 'Update'}
                 </button>
+                </div>
                 {error && <p className="message-error">{error}</p>}
             </div>
         </div>

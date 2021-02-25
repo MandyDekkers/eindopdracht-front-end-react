@@ -5,14 +5,21 @@
     width: 330px;
     height: 300px;
     margin: 10px;
-    /*background: rgba(0,0,0,0.6);*/
-    background-color: rosybrown;
+    background-color: rgba(0,134,139, 0.8);
+    border-radius: 2px;
+    color: white;
+}
+
+.button-update-delete-member:hover {
+    opacity: 0.5;
 }
 
 .lessons {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    padding: 30px;
+    padding: 35px;
 }
 
 .add-lesson {
@@ -21,13 +28,13 @@
 }
 
 .intro {
-    padding: 30px;
+    padding: 35px;
 }
 
 .lessonoverview {
     display: flex;
     justify-content: center;
-    padding-top: 15px;
+    padding-top: 25px;
 }
 
 .lessonnewoverview {

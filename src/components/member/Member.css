@@ -1,4 +1,4 @@
-.toreserve {
+.member-details {
     padding: 25px;
     border-style: solid;
     border-width: 1px;
@@ -7,10 +7,18 @@
     margin: 10px;
     background-color: rgba(0,134,139, 0.8);
     color: white;
+    border-radius: 2px;
 }
 
-.reservebutton {
-    margin-top: 15px;
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.button-update-delete-member {
     background: transparent;
     border: 1px solid white;
     border-radius: 2px;
@@ -18,15 +26,6 @@
     padding: 6px;
 }
 
-.reservedbuttoncontainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-input {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid #fff;
+.button-update-delete-member:hover {
+    opacity: 0.5;
 }

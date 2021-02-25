@@ -1,0 +1,18 @@
+.lastname-button {
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 2px;
+    color: black;
+    margin-top: 15px;
+    padding: 7px;
+}
+
+.searchbar input {
+    color: black;
+    background: transparent;
+    border: 1px solid black;
+}
+
+.inputlastname {
+    padding-bottom: 10px;
+}

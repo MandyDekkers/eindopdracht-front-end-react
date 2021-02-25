@@ -23,14 +23,14 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
             setUpdateMember(null);
             getAllMembers();
         } catch (error) {
-            setError('Er is iets misgegaan bij het wijzigen van de gegevens')
+            setError('Probeer het opnieuw')
         }
         toggleLoading(false);
     }
     return (
         <>
             <div className="update-container">
-                <form className="member-form" onSubmit={handleSubmit(onFormSubmit)}>
+                <form className="update-member-form" onSubmit={handleSubmit(onFormSubmit)}>
                     <button onClick={() => setUpdateMember(0)} type="button" className="close">X</button>
 
                     <label htmlFor="member-id"> Id:</label>
@@ -44,7 +44,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({required: true})}
                     />
-                    {errors.firstName && <p className="error">Invoer voornaam is verplicht</p>}
+                    {errors.firstName && <p className="error-update">Invoer voornaam is verplicht</p>}
 
                     <label htmlFor="lastname-field">Achternaam*:</label>
                     <input
@@ -54,7 +54,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         id="lastname-field"
                         ref={register({ required: true })}
                     />
-                    {errors.lastName && <p className="error">Invoer achternaam is verplicht</p>}
+                    {errors.lastName && <p className="error-update">Invoer achternaam is verplicht</p>}
 
                     <label htmlFor="emailaddress-field">E-mailadres*:</label>
                     <input
@@ -64,7 +64,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({required: true, validate: (value) => value.includes('@'),})}
                     />
-                    {errors.email && <p className="error">Voer een juist e-mailadres in</p>}
+                    {errors.email && <p className="error-update">Voer een juist e-mailadres in</p>}
 
                     <label htmlFor="streetname-field">Straatnaam*:</label>
                     <input
@@ -74,7 +74,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({ required: true })}
                     />
-                    {errors.streetName && <p className="error">Invoer straatnaam is verplicht</p>}
+                    {errors.streetName && <p className="error-update">Invoer straatnaam is verplicht</p>}
 
                     <label htmlFor="housenumber-field">Huisnummer + toevoeging*:</label>
                     <input
@@ -84,7 +84,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="tel"
                         ref={register({ required: true })}
                     />
-                    {errors.houseNumber && <p className="error">Invoer huisnummer is verplicht</p>}
+                    {errors.houseNumber && <p className="error-update">Invoer huisnummer is verplicht</p>}
 
                     <label htmlFor="postalCode-field">Postcode*:</label>
                     <input
@@ -94,7 +94,7 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({required: true, pattern: /^[0-9]{4}[a-zA-Z]{2}$/})}
                     />
-                    {errors.postalCode && <p className="error">Postcode is niet juist</p>}
+                    {errors.postalCode && <p className="error-update">Postcode is niet juist</p>}
 
                     <label htmlFor="city-field">Woonplaats*:</label>
                     <input
@@ -105,8 +105,8 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         type="text"
                         ref={register({ required: true })}
                     />
-                    {errors.city && <p className="error">Invoer woonplaats is verplicht</p>}
-
+                    {errors.city && <p className="error-update">Invoer woonplaats is verplicht</p>}
+<div className="update-member-button">
                     <button
                         className="savebutton"
                         type="submit"
@@ -114,8 +114,9 @@ function UpdateMember({ member, setUpdateMember, getAllMembers }) {
                         >
                         {loading ? 'Laden...' : 'Opslaan'}
                     </button>
+</div>
+                    {error && <p className="update-message-error">{error}</p>}
                 </form>
-                {error && <p className="message-error">{error}</p>}
             </div>
         </>
     );

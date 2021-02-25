@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import axios from "axios";
 import { useForm } from 'react-hook-form';
-import LessonMade from "./LessonMade";
 import './LessonToReserve.css'
 import {useAuthState} from "../../context/AuthContext";
 
@@ -49,7 +48,7 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                    type="text"
                    ref={register}
                 />
-
+<div className="reservedbuttoncontainer">
                 <button
                     className="reservebutton"
                     type="submit"
@@ -57,6 +56,7 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                 >
                     {loading ? 'Laden...' : 'Reserveer'}
                 </button>
+</div>
                 {error && <p className="message-error">{error}</p>}
            </form>
                     </>

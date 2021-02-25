@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from "axios";
+import './Member.css';
 
 function Member({ member, getAllMembers, setUpdateMember }) {
 
@@ -39,7 +40,7 @@ function Member({ member, getAllMembers, setUpdateMember }) {
             }
             <div className="buttons">
                 <button
-                className="update-member"
+                className="button-update-delete-member"
                 onClick={() => setUpdateMember(member.id)}
                 type="submit"
                 >
@@ -47,7 +48,7 @@ function Member({ member, getAllMembers, setUpdateMember }) {
                 </button>
 
                 <button
-                className="delete-member"
+                className="button-update-delete-member"
                 onClick={() => deleteMember(member.id)}
                 type="submit"
                 disabled={loading}

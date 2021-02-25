@@ -1,11 +1,6 @@
-.create-account {
-    font-size: smaller;
-    cursor: pointer;
-    padding-top: 10px;
-}
-
 .login-container {
     min-height: 100vh;
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,29 +9,84 @@
 .login-form {
     display: flex;
     flex-direction: column;
+    color: black;
     padding: 40px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.4);
+    border: 2px solid grey;
+    width: 275px;
+    height: 350px;
+    border-radius: 2px;
 }
 
 .login-form input {
     width: 100%;
     margin-bottom: 15px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid grey;
     background: transparent;
     height: 40px;
     outline: none;
-    color: whitesmoke;
+    color: grey;
 }
 
-/*.login-button {*/
-/*    padding: 8px;*/
-/*    background-color: orange;*/
-/*}*/
+::-webkit-input-placeholder{
+    color: darkgrey;
+    font-weight: lighter;
+    font-size: smaller;
+    font-style: italic;
+}
 
-/*.login-button:hover {*/
-/*    opacity: 0.6;*/
-/*}*/
+.login-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.login-button {
+    background: transparent;
+    border: 1px solid grey;
+    border-radius: 2px;
+    color: grey;
+    margin-top: 10px;
+    padding: 6px;
+}
+
+.login-button:hover {
+    opacity: 0.5;
+}
+
+.create-account {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    padding-top: 20px;
+    color: grey;
+}
+
+.error-inlog {
+    color: darkred;
+    font-size: 11px;
+    padding-bottom: 15px;
+}
+
+.error-send-login {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    color: darkred;
+    font-size: 11px;
+    padding-top: 15px;
+}
+
+
+
+
+
+
+
+
 
 /*.user {*/
 /*    width: 40px;*/
@@ -81,10 +131,7 @@
 /*    font-weight: bold;*/
 /*}*/
 
-/*::-webkit-input-placeholder{*/
-/*    color: black;*/
-/*    font-weight: lighter;*/
-/*}*/
+
 
 
 /*.login-box input[type="submit"] {*/

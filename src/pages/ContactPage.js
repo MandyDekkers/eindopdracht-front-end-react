@@ -7,7 +7,7 @@ import PageHeader from "../components/header/PageHeader";
 
 
 function ContactPage() {
-    const { handleSubmit, register, errors, watch } = useForm();
+    const { register, errors } = useForm();
 
     return (
 
@@ -55,13 +55,14 @@ function ContactPage() {
                     ref={register({required: true})}
                 />
                 {errors.text && <p>Invoer is verplicht</p>}
-
+<div className="sendbutton">
                 <button className="send"
                     type="submit"
 
                 >
                     Verstuur
                 </button>
+</div>
             </form>
         </div>
         </div>

@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.member-form {
+.update-member-form {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -12,30 +12,70 @@
     border-width: 1px;
     padding: 15px;
     width: 300px;
+    height: 600px;
     margin: 25px;
+    color: white;
+    background-color: rgba(0,134,139, 0.8);
+    border-radius: 2px;
 }
 
-.member-form label {
+.update-member-form label {
     margin: 4px 0;
     font-weight: bold;
 }
 
-.member-form input {
-    width: 100%;
+.update-member-form input {
     padding: 2px 6px;
     margin: 2px 0;
-}
-
-.savebutton {
-    margin-top: 15px;
-    width: 100px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    width: 250px;
+    color: white;
+    outline: none;
 }
 
 .close {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
     position: absolute;
     width: 25px;
     right: 10px;
     top: 10px;
 }
 
+.update-member-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
 
+.savebutton {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 2px;
+    color: white;
+    padding: 6px;
+}
+
+.savebutton:hover {
+    opacity: 0.5;
+}
+
+.error-update {
+    color: darkred;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.update-message-error{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    color: darkred;
+    font-size: 11px;
+    padding-top: 15px;
+}
