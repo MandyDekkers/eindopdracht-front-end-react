@@ -3,7 +3,6 @@ import axios from "axios";
 import './Member.css';
 
 function Member({ member, getAllMembers, setUpdateMember }) {
-
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
 
@@ -28,37 +27,36 @@ function Member({ member, getAllMembers, setUpdateMember }) {
 
     return (
         <>
-        <div className="member-details">
-            {member &&
-            <>
-                <h4>Lidnummer: {member.id}</h4>
-                <h3>{member.firstName} {member.lastName}</h3>
-                <h4>{member.streetName} {member.houseNumber}</h4>
-                <h4>{member.postalCode} {member.city}</h4>
-                <h4>{member.email}</h4>
-            </>
-            }
-            <div className="buttons">
-                <button
-                className="button-update-delete-member"
-                onClick={() => setUpdateMember(member.id)}
-                type="submit"
-                >
-                Update
-                </button>
+            <div className="member-details">
+                {member &&
+                <>
+                    <h4>Lidnummer: {member.id}</h4>
+                    <h3>{member.firstName} {member.lastName}</h3>
+                    <h4>{member.streetName} {member.houseNumber}</h4>
+                    <h4>{member.postalCode} {member.city}</h4>
+                    <h4>{member.email}</h4>
+                </>
+                }
+                <div className="buttons">
+                    <button
+                        className="button-update-delete-member"
+                        onClick={() => setUpdateMember(member.id)}
+                        type="submit"
+                    >
+                    {loading ? 'Laden...' : 'Update'}
+                    </button>
+                    <button
+                        className="button-update-delete-member"
+                        onClick={() => deleteMember(member.id)}
+                        type="submit"
+                        disabled={loading}
+                    >
+                    {loading ? 'Laden...' : 'Verwijder'}
+                    </button>
+                </div>
+                {error && <p className="message-errordelete">{error}</p>}
 
-                <button
-                className="button-update-delete-member"
-                onClick={() => deleteMember(member.id)}
-                type="submit"
-                disabled={loading}
-                >
-                {loading ? 'Laden...' : 'Verwijder'}
-                </button>
             </div>
-            {error && <p className="message-error">{error}</p>}
-
-        </div>
         </>
     )
 }

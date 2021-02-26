@@ -12,8 +12,15 @@
     border-radius: 2px;
     color: white;
     padding: 6px;
+    cursor: pointer;
 }
 
 .button-update-delete-member:hover {
     opacity: 0.5;
+}
+
+.err-delete-user {
+    color: darkred;
+    font-size: 11px;
+    padding-bottom: 15px;
 }

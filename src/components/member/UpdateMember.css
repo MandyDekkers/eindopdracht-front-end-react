@@ -44,6 +44,7 @@
     width: 25px;
     right: 10px;
     top: 10px;
+    cursor: pointer;
 }
 
 .update-member-button {
@@ -59,6 +60,7 @@
     border-radius: 2px;
     color: white;
     padding: 6px;
+    cursor: pointer;
 }
 
 .savebutton:hover {

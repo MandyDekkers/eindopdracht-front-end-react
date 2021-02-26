@@ -4,7 +4,6 @@ import axios from "axios";
 import './UpdateLesson.css'
 
 function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
-
     const { handleSubmit, register, errors } = useForm();
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
@@ -14,7 +13,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
         setError('');
         const token = localStorage.getItem('token');
         try {
-            const result = await axios.put(`http://localhost:8080/lesson/${lesson.id}`, data, {
+            await axios.put(`http://localhost:8080/lesson/${lesson.id}`, data, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
@@ -33,12 +32,11 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
             <div className="lesson-box">
                 <form className="lesson-form" onSubmit={handleSubmit(onFormSubmit)}>
                     <button onClick={() => setUpdateLesson(0)} type="button" className="closelesson">X</button>
-
                     <label htmlFor="lesson-id"> Lesnummer:</label>
-                    <input type="text" readOnly defaultValue={lesson.id}
-                           name="id"
-                           />
-
+                    <input
+                        type="text" readOnly defaultValue={lesson.id}
+                        name="id"
+                    />
                     <label htmlFor="kindOfLesson-field">Soort les*:</label>
                     <input
                         defaultValue={lesson.name}
@@ -47,8 +45,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         type="text"
                         ref={register({required: true})}
                     />
-                    {errors.name && <p className="error">Invoer soort les is verplicht</p>}
-
+                    {errors.name && <p className="update-error-les">Invoer soort les is verplicht</p>}
                     <label htmlFor="date-field">Datum*:</label>
                     <input
                         defaultValue={lesson.date}
@@ -57,8 +54,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         type="text"
                         ref={register({required: true})}
                     />
-                    {errors.name && <p className="error">Invoer datum is verplicht</p>}
-
+                    {errors.name && <p className="update-error-les">Invoer datum is verplicht</p>}
                     <label htmlFor="members-field">Max. aantal deelnemers*:</label>
                     <input
                         defaultValue={lesson.maxAmountMembers}
@@ -67,8 +63,7 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         type="text"
                         ref={register({required: true })}
                     />
-                    {errors.maxAmountMembers && <p className="error">Invoer aantal deelnemers les is verplicht</p>}
-
+                    {errors.maxAmountMembers && <p className="update-error-les">Invoer aantal deelnemers les is verplicht</p>}
                     <label htmlFor="maxMembers-field">Niveau*:</label>
                     <input
                         defaultValue={lesson.niveau}
@@ -77,18 +72,19 @@ function UpdateLesson ({ lesson, setUpdateLesson, getAllLessons}) {
                         name="niveau"
                         ref={register({required: true })}
                     />
-                    {errors.niveau && <p className="error">Invoer niveau is verplicht</p>}
-                <div className="buttonsave">
-                    <button
-                        className="saveupdatedlesson"
-                        type="submit"
-                        disabled={loading}
-                    >
-                        {loading ? 'Laden...' : 'Opslaan'}
+                    {errors.niveau && <p className="update-error-les">Invoer niveau is verplicht</p>}
+                    <div className="buttonsave">
+                        <button
+                            className="saveupdatedlesson"
+                            type="submit"
+                            disabled={loading}
+                            >
+                            {loading ? 'Laden...' : 'Opslaan'}
                     </button>
-                </div>
+                    </div>
+                    {error && <p className="adding-les">Er is iets misgegaan bij het wijzigen van deze les</p>}
                 </form>
-                {error && <p>Er is iets misgegaan bij het wijzigen van deze les.</p>}
+
             </div>
         </>
     );

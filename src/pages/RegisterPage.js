@@ -22,6 +22,7 @@ function RegisterPage() {
                 username: data.username,
                 email: data.email,
                 password: data.password,
+                repeatedPassword: data.repeatedPassword,
                 streetName: data.streetName,
                 houseNumber: data.houseNumber,
                 postalCode: data.postalCode,
@@ -43,8 +44,6 @@ function RegisterPage() {
 
     return (
         <>
-
-
             <div className="register-container">
                 <form className="register-form" onSubmit={handleSubmit(onFormSubmit)}>
                     <label htmlFor="firstname-field">Voornaam*:</label>
@@ -102,6 +101,25 @@ function RegisterPage() {
                         )}
                     />
                     {errors.password && <p className="error-register">Invoer wachtwoord is verplicht</p>}
+
+                    <label htmlFor="password">Herhaal wachtwoord*:</label>
+                    <input
+                        type="password"
+                        placeholder="herhaal je wachtwoord"
+                        name="repeatedPassword"
+                        id="password-field"
+                        ref={register(
+                            {required: {
+                                    value: true
+                                },
+                                minLength: {
+                                    value: 8,
+                                    message: 'Min. 8 karakters',
+                                },
+                            }
+                        )}
+                    />
+                    {errors.password && <p className="error-register">Herhaal je wachtwoord</p>}
 
                     <label htmlFor="streetname-field">Straatnaam*:</label>
                     <input

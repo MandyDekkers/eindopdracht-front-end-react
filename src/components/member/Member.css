@@ -24,8 +24,14 @@
     border-radius: 2px;
     color: white;
     padding: 6px;
+    cursor: pointer;
 }
 
 .button-update-delete-member:hover {
     opacity: 0.5;
+}
+
+.message-errordelete {
+    color: darkred;
+    font-size: 11px;
 }

@@ -50,9 +50,7 @@ function LoginPage() {
     return (
         <>
             <div className="login-container">
-
                 <form className="login-form" onSubmit={handleSubmit(formSubmit)}>
-
                     <label htmlFor="username-field">Gebruikersnaam*:</label>
                     <input
                         name="username"
@@ -61,8 +59,7 @@ function LoginPage() {
                         placeholder="Jouw gebruikersnaam"
                         ref={register({required: true})}
                     />
-                    {errors.username && <p className="error-inlog">GEBRUIKERSNAAM ONTBREEKT</p>}
-
+                    {errors.username && <p className="error-inlog">Gebruikersnaam ontbreekt</p>}
                     <label htmlFor="password-field">Wachtwoord*:</label>
                     <input
                         type="password"
@@ -71,18 +68,18 @@ function LoginPage() {
                         id="password-field"
                         ref={register({required: true})}
                     />
-                    {errors.password && <p className="error-inlog">WACHTWOORD ONTBREEKT</p>}
+                    {errors.password && <p className="error-inlog">Wachtwoord ontbreekt</p>}
                 <div className="login-button-container">
-                    <button className="login-button"
-                            type="submit"
-                            disabled={loading}
+                    <button
+                        className="login-button"
+                        type="submit"
+                        disabled={loading}
                     >
-                        {loading ? 'Laden...' : 'Inloggen'}
+                    {loading ? 'Laden...' : 'Inloggen'}
                     </button>
                 </div>
-
-                    <p className="create-account" ><Link to="/register"> Nieuw? Registreer je hier!</Link></p>
-
+                <p className="create-account" ><Link to="/register"> Nieuw? Registreer je hier!</Link></p>
+                 {error && <p className="error-send-login">{error}</p>}
                 </form>
             </div>
         </>

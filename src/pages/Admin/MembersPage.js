@@ -66,13 +66,12 @@ function MembersPage() {
     }, [lastName]);
 
     return (
-<>         <HeaderAdmin />
+        <>
+            <HeaderAdmin />
             {!updateMember ? (
             <div className="all-members">
                 <PageHeader icon={teamwork} title="Ledenoverzicht" />
-
                 <Searchbar setLastNameHandler={setLastName}/>
-
                 <div className="lastname">
                     {test && test.map((test) => (
                         <Member
@@ -96,16 +95,16 @@ function MembersPage() {
                     {loading && <p>Aan het laden...</p>}
                 </div>
             </div>
-    ) : (
-        <div>
-        <UpdateMember
-            member={members[members.findIndex(member => member.id === updateMember)]}
-            setUpdateMember={setUpdateMember}
-            getAllMembers={getAllMembers}
-        />
-        </div>
-        )}
-</>
+        ) : (
+            <div>
+                <UpdateMember
+                    member={members[members.findIndex(member => member.id === updateMember)]}
+                    setUpdateMember={setUpdateMember}
+                    getAllMembers={getAllMembers}
+                />
+            </div>
+            )}
+        </>
     );
 }
 

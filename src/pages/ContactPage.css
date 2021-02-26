@@ -16,12 +16,22 @@
 }
 
 .contactform label {
-    margin: 4px 0;
+    margin-top: 10px;
     font-weight: bold;
     color: white;
 }
 
+.contactform input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    height: 25px;
+    color: white;
+}
+
 .contactform textarea {
+    margin-top: 10px;
     background-color: transparent;
     border-color: white;
 }

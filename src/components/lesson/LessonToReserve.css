@@ -16,6 +16,7 @@
     border-radius: 2px;
     color: white;
     padding: 6px;
+    cursor: pointer;
 }
 
 .reservedbuttoncontainer {
@@ -24,9 +25,16 @@
     justify-content: center;
 }
 
-input {
+.toreserve input {
     background-color: transparent;
     outline: none;
     border: none;
     border-bottom: 1px solid #fff;
+}
+
+.message-error {
+    color: darkred;
+    font-size: 11px;
+    padding-top: 8px;
+    padding-bottom: 15px;
 }

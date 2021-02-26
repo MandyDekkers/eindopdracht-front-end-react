@@ -5,8 +5,7 @@ import './LessonToReserve.css'
 import {useAuthState} from "../../context/AuthContext";
 
 function LessonToReserve( { lesson, getReservedLessons }) {
-
-    const { handleSubmit, register, errors } = useForm();
+    const { handleSubmit, register } = useForm();
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
     const { user } = useAuthState();
@@ -16,7 +15,7 @@ function LessonToReserve( { lesson, getReservedLessons }) {
         setError('');
         const token = localStorage.getItem('token');
         try {
-            const response = await axios.post(`http://localhost:8080/appuser/${user.id}/lesson/${lesson.id}`, {
+            await axios.post(`http://localhost:8080/appuser/${user.id}/lesson/${lesson.id}`, {
                 comment: data.comment
             }, {
                 headers: {
@@ -25,10 +24,8 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                 }
             });
             getReservedLessons();
-            console.log(response.data);
-
         } catch (error) {
-            setError('Er is iets misgegaan bij het versturen van de data')
+            setError('Er is iets misgegaan bij het reserveren van de les')
         }
         toggleLoading(false);
     }
@@ -42,24 +39,24 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                 <h4>Niveau: {lesson.niveau} </h4>
 
                 <label htmlFor="comment-field">Opmerking:</label>
-                <input
-                   name="comment"
-                   id="comment-field"
-                   type="text"
-                   ref={register}
-                />
-<div className="reservedbuttoncontainer">
-                <button
-                    className="reservebutton"
-                    type="submit"
-                    disabled={loading}
-                >
+                    <input
+                       name="comment"
+                       id="comment-field"
+                       type="text"
+                       ref={register}
+                    />
+                <div className="reservedbuttoncontainer">
+                    <button
+                        className="reservebutton"
+                        type="submit"
+                        disabled={loading}
+                    >
                     {loading ? 'Laden...' : 'Reserveer'}
-                </button>
-</div>
+                    </button>
+                </div>
                 {error && <p className="message-error">{error}</p>}
-           </form>
-                    </>
+            </form>
+        </>
     )
 }
 

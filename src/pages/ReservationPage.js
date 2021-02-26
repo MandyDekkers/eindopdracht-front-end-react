@@ -7,7 +7,6 @@ import sport from "../assets/sport.png";
 import './ReservationPage.css'
 import {useAuthState} from "../context/AuthContext";
 
-
 function ReservationPage() {
 
     const [lessons, setLessons] = useState();
@@ -33,7 +32,7 @@ function ReservationPage() {
             });
             setLessons(result.data);
         } catch (error) {
-            setError('Er is iets misgegaan bij het ophalen van de data')
+            setError('Er is iets misgegaan bij het ophalen van de lessen')
         }
         toggleLoading(false);
     }
@@ -54,7 +53,6 @@ function ReservationPage() {
                 }
             });
             setLessonReserved(result.data);
-            console.log(result.data);
         } catch (error) {
             setError('Er is iets misgegaan bij het ophalen van de data')
         }
@@ -62,40 +60,39 @@ function ReservationPage() {
     }
 
     return (
-    <>
-        <div className="cont">
-            <Header/>
-            <PageHeader icon={sport} title="Reserveer een les!" />
-            <h3 className="lessonoverview">Gereserveerde lessen:</h3>
-
-        <div className="lessonmade">
-            {lessonReserved && lessonReserved.map((lesson) => (
-                <>
-                    <div className="ownlessons">
-                    <h3>{lesson.name}</h3>
-                    <h4>{lesson.date}</h4>
-                    <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
-                    <h4>Niveau: {lesson.niveau} </h4>
-                    <h4>Opmerking: {lesson.comment} </h4>
-                    <h4 className="plannedlesson">Leuk dat je aan deze les meedoet!</h4>
-                    </div>
-                </>
-            ))}
-
-        </div>
-    <h3 className="lessonoverview">Lessen:</h3>
-        <div className="lessons">
-            {lessons && lessons.map((lesson) => (
-            <LessonToReserve
-                key={lesson.id}
-                lesson={lesson}
-                getReservedLessons={getReservedLessons}
-            />
-            ))}
-        </div>
-            {error && <p className="message-error">{error}</p>}
-</div>
-    </>
+        <>
+            <div className="cont">
+                <Header/>
+                <PageHeader icon={sport} title="Reserveer een les!" />
+                <h3 className="lessonoverview">Gereserveerde lessen:</h3>
+                <div className="lessonmade">
+                    {lessonReserved && lessonReserved.map((lesson) => (
+                        <>
+                            <div className="ownlessons">
+                                <h3>{lesson.name}</h3>
+                                <h4>{lesson.date}</h4>
+                                <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
+                                <h4>Niveau: {lesson.niveau} </h4>
+                                <h4>Opmerking: {lesson.comment} </h4>
+                                <h4 className="plannedlesson">Leuk dat je aan deze les meedoet!</h4>
+                            </div>
+                        </>
+                    ))}
+                </div>
+                <h3 className="lessonoverview">Lessen:</h3>
+                <div className="lessons">
+                    {lessons && lessons.map((lesson) => (
+                        <LessonToReserve
+                            key={lesson.id}
+                            lesson={lesson}
+                            getReservedLessons={getReservedLessons}
+                        />
+                    ))}
+                </div>
+                {error && <p className="message-error">{error}</p>}
+                {loading && <p className="message-error">Aan het laden...</p>}
+                </div>
+        </>
     )
 }
 

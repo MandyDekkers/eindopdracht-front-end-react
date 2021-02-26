@@ -26,13 +26,13 @@ function Searchbar({ setLastNameHandler }) {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Vul een achternaam in"
              />
-        <button
-            className="lastname-button"
-            type="button"
-            onClick={handleClick}
-        >
+            <button
+                className="lastname-button"
+                type="button"
+                onClick={handleClick}
+            >
             Zoek
-        </button>
+            </button>
         </div>
     );
 }

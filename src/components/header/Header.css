@@ -1,8 +1,11 @@
 .logo-button {
     cursor: pointer;
+    font-weight: bold;
+    font-size: larger;
 }
 
 .log-out-icon {
+    cursor: pointer;
     width: 27px;
     height: 27px;
 }
@@ -32,12 +35,6 @@ ul {
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
-}
-
-.logo-button {
-    color: white;
-    font-weight: bold;
-    font-size: larger;
 }
 
 a,

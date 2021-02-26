@@ -1,4 +1,3 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');*/
 @media screen and (min-width: 576px) {
 
     * {
@@ -17,7 +16,7 @@
         left: 0;
         top:0;
         z-index: -10;
-        background-image: url("achtergrond-afbeelding.jpg");
+        background-image: url("assets/achtergrond-afbeelding.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: left top;
