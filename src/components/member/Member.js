@@ -11,7 +11,7 @@ function Member({ member, getAllMembers, setUpdateMember ,setFoundLastName }) {
         setError('');
         const token = localStorage.getItem('token');
         try {
-            const result = await axios.delete(`http://localhost:8080/appuser/${member.id}`, {
+            await axios.delete(`http://localhost:8080/appuser/${member.id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
