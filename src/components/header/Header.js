@@ -11,7 +11,7 @@ function Header(){
 
     useEffect(() => {
         if (isAuthenticated === false) {
-            history.push('/login');
+            history.push('/');
         }
     }, [isAuthenticated]);
 

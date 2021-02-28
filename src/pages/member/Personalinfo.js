@@ -37,7 +37,6 @@ function PersonalinfoPage() {
                 }
             });
             getImage();
-            console.log(MYSTRING);
         } catch (error) {
             setError('Uploaden afbeelding mislukt, probeer het opnieuw!')
         }

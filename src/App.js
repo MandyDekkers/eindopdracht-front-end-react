@@ -17,7 +17,7 @@ function App() {
   return (
       <Router>
           <Switch>
-              <Route exact path="/login">
+              <Route exact path="/">
                   <LoginPage />
               </Route>
               <Route path="/register">

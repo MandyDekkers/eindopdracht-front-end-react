@@ -7,7 +7,7 @@ function PrivateRoute( { children, ...rest }) {
 
     return (
         <Route {...rest} render={() => {
-            return isAuthenticated ? children : <Redirect to="/login"/>
+            return isAuthenticated ? children : <Redirect to="/"/>
         }}/>
     );
 }
