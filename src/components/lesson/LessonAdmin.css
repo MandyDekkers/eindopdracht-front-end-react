@@ -8,9 +8,9 @@
 
 .button-update-delete-member {
     background: transparent;
-    border: 1px solid white;
+    border: 1px solid rgba(255,255,255,1);
     border-radius: 2px;
-    color: white;
+    color: rgba(255,255,255,1);
     padding: 6px;
     cursor: pointer;
 }
@@ -20,7 +20,7 @@
 }
 
 .err-delete-user {
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
     padding-bottom: 15px;
 }

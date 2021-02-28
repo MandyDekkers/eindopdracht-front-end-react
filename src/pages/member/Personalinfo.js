@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import Header from "../components/header/Header";
+import Header from "../../components/header/Header";
 import './PersonalInfo.css';
-import UpdateMember from "../components/member/UpdateMember";
-import USER from "../assets/user.png"
-import PageHeader from "../components/header/PageHeader";
-import {useAuthState} from "../context/AuthContext";
-import PasswordUpdate from "../components/member/PasswordUpdate";
+import UpdateMember from "../../components/member/UpdateMember";
+import USER from "../../assets/user.png"
+import PageHeader from "../../components/header/PageHeader";
+import {useAuthState} from "../../context/AuthContext";
+import PasswordUpdate from "../../components/member/PasswordUpdate";
 
 function PersonalinfoPage() {
 
@@ -17,7 +17,6 @@ function PersonalinfoPage() {
     const [error2, setError2] = useState('');
     const [loading, toggleLoading] = useState(false);
     const { user } = useAuthState();
-    // const [image, setImage] = useState("");
     const [image1, setImage1] = useState("");
 
     async function uploadImage(e) {
@@ -25,7 +24,6 @@ function PersonalinfoPage() {
         setError('');
         const file = e.target.files[0];
         const MYSTRING = await convertBase64(file)
-        // setImage(MYSTRING);
         try {
             const token = localStorage.getItem('token');
             await axios.post('http://localhost:8080/appuser/image', {
@@ -38,6 +36,8 @@ function PersonalinfoPage() {
                     Authorization: `Bearer ${token}`,
                 }
             });
+            getImage();
+            console.log(MYSTRING);
         } catch (error) {
             setError('Uploaden afbeelding mislukt, probeer het opnieuw!')
         }
@@ -45,6 +45,9 @@ function PersonalinfoPage() {
     }
 
     useEffect(() => {
+        getImage();
+    }, []);
+
     async function getImage() {
         toggleLoading(true);
         setError1('');
@@ -66,9 +69,6 @@ function PersonalinfoPage() {
         }
         toggleLoading(false);
     }
-        getImage();
-
-    }, []);
 
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {

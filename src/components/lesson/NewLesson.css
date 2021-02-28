@@ -12,7 +12,7 @@
 .lesson-form label {
     margin: 4px 0;
     font-weight: bold;
-    color: white;
+    color: rgba(255,255,255,1);
 }
 
 .lesson-form input {
@@ -22,15 +22,15 @@
     background: transparent;
     border: none;
     outline: none;
-    color: white;
+    color: rgba(255,255,255,1);
 }
 
 .savenewlesson {
     margin-top: 15px;
     background: transparent;
-    border: 1px solid white;
+    border: 1px solid rgba(255,255,255,1);
     border-radius: 2px;
-    color: white;
+    color: rgba(255,255,255,1);
     padding: 6px;
     width: 80px;
     cursor: pointer;
@@ -46,7 +46,7 @@
 }
 
 .new-les-error {
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
     margin-top: 15px;
 }

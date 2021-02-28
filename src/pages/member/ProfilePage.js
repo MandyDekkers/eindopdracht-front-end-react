@@ -1,7 +1,7 @@
-import Header from "../components/header/Header";
-import welcome from "../assets/welcome.png";
-import PageHeader from "../components/header/PageHeader";
-import {useAuthState} from "../context/AuthContext";
+import Header from "../../components/header/Header";
+import welcome from "../../assets/welcome.png";
+import PageHeader from "../../components/header/PageHeader";
+import {useAuthState} from "../../context/AuthContext";
 import "./ProfilePage.css"
 
 function ProfilePage() {

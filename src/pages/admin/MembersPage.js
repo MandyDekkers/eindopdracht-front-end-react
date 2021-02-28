@@ -11,7 +11,7 @@ import PageHeader from "../../components/header/PageHeader";
 function MembersPage() {
     const [members, setMembers] = useState();
     const [lastName, setLastName] = useState();
-    const [test, setTest] = useState();
+    const [foundLastName, setFoundLastName] = useState();
     const [updateMember, setUpdateMember] = useState(null);
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
@@ -32,7 +32,6 @@ function MembersPage() {
                 }
             });
             setMembers(result.data);
-            console.log(result.data);
         } catch (error) {
             setError('Er is iets misgegaan bij het ophalen van de gegevens')
         }
@@ -51,8 +50,7 @@ function MembersPage() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                setTest(result.data);
-                console.log(result.data);
+                setFoundLastName(result.data);
             } catch (error) {
                 setError('Er is iets misgegaan bij het ophalen van de gegevens')
             }
@@ -73,12 +71,13 @@ function MembersPage() {
                 <PageHeader icon={teamwork} title="Ledenoverzicht" />
                 <Searchbar setLastNameHandler={setLastName}/>
                 <div className="lastname">
-                    {test && test.map((test) => (
+                    {foundLastName && foundLastName.map((found) => (
                         <Member
-                            key={test.id}
-                            member={test}
+                            key={found.id}
+                            member={found}
                             getAllMembers={getAllMembers}
                             setUpdateMember={setUpdateMember}
+                            setFoundLastName={setFoundLastName}
                         />
                     ))}
                 </div>

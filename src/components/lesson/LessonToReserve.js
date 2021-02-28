@@ -36,8 +36,7 @@ function LessonToReserve( { lesson, getReservedLessons }) {
                 <h4>{lesson.name}</h4>
                 <h4>{lesson.date}</h4>
                 <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
-                <h4>Niveau: {lesson.niveau} </h4>
-
+                <h4 className="lastline">Niveau: {lesson.niveau} </h4>
                 <label htmlFor="comment-field">Opmerking:</label>
                     <input
                        name="comment"

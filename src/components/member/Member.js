@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from "axios";
 import './Member.css';
 
-function Member({ member, getAllMembers, setUpdateMember }) {
+function Member({ member, getAllMembers, setUpdateMember ,setFoundLastName }) {
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
 
@@ -17,8 +17,8 @@ function Member({ member, getAllMembers, setUpdateMember }) {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            console.log(result);
             getAllMembers();
+            setFoundLastName(null);
         } catch (error) {
             setError('Er is iets misgegaan bij het verwijderen van het lid')
         }

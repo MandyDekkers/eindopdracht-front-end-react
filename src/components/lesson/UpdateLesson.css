@@ -36,7 +36,7 @@
     border-style: none;
     border-radius: 2px;
     background-color: transparent;
-    color: white;
+    color: rgba(255,255,255,1);
     cursor: pointer;
 }
 
@@ -52,8 +52,8 @@
     border-radius: 2px;
     width: 35%;
     background-color: transparent;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid rgba(255,255,255,1);
+    color: rgba(255,255,255,1);
     padding: 6px;
     cursor: pointer;
 }
@@ -63,12 +63,12 @@
 }
 
 .update-error-les {
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
 }
 
 .adding-les {
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
 }
 

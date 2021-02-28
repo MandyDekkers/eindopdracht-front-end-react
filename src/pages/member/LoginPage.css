@@ -9,10 +9,10 @@
 .login-form {
     display: flex;
     flex-direction: column;
-    color: black;
+    color: rgba(0,0,0,1);
     padding: 40px;
     background: rgba(255,255,255,0.4);
-    border: 2px solid grey;
+    border: 2px solid rgba(67,67,67,1);
     width: 275px;
     height: 350px;
     border-radius: 2px;
@@ -22,15 +22,15 @@
     width: 100%;
     margin-bottom: 15px;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgba(67,67,67,1);
     background: transparent;
     height: 40px;
     outline: none;
-    color: grey;
+    color: rgba(67,67,67,1);
 }
 
 ::-webkit-input-placeholder{
-    color: darkgrey;
+    color: rgba(67,67,67,1);
     font-weight: lighter;
     font-size: smaller;
     font-style: italic;
@@ -45,9 +45,9 @@
 
 .login-button {
     background: transparent;
-    border: 1px solid grey;
+    border: 1px solid rgba(67,67,67,1);
     border-radius: 2px;
-    color: grey;
+    color: rgba(67,67,67,1);
     margin-top: 10px;
     padding: 6px;
     cursor: pointer;
@@ -63,11 +63,11 @@
     font-size: 12px;
     cursor: pointer;
     padding-top: 20px;
-    color: grey;
+    color: rgba(67,67,67,1);
 }
 
 .error-inlog {
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
     padding-bottom: 15px;
 }
@@ -76,7 +76,7 @@
     display: flex;
     justify-content: center ;
     align-items: center;
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
     padding-top: 15px;
 }

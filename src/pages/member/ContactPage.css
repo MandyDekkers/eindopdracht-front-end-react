@@ -18,22 +18,22 @@
 .contactform label {
     margin-top: 10px;
     font-weight: bold;
-    color: white;
+    color: rgba(255,255,255,1);
 }
 
 .contactform input {
     background-color: transparent;
     outline: none;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid rgba(255,255,255,1);
     height: 25px;
-    color: white;
+    color: rgba(255,255,255,1);
 }
 
 .contactform textarea {
     margin-top: 10px;
     background-color: transparent;
-    border-color: white;
+    border-color: rgba(255,255,255,1);
 }
 
 .sendbutton {
@@ -44,9 +44,9 @@
 
 .send {
     background: transparent;
-    border: 1px solid white;
+    border: 1px solid rgba(255,255,255,1);
     border-radius: 2px;
-    color: white;
+    color: rgba(255,255,255,1);
     padding: 6px;
     margin-top: 15px;
     width: 85px;

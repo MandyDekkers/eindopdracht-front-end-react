@@ -15,7 +15,7 @@ function AuthContextProvider( { children }){
 
         async function getUserInfo() {
             try {
-                const response = await axios.get(`http://localhost:8080/api/auth/user`, {
+                const response = await axios.get(`https://localhost:8080/api/auth/user`, {
                         headers: {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,

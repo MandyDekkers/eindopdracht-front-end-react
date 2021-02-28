@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage";
-import ReservationPage from "./pages/ReservationPage";
-import ContactPage from "./pages/ContactPage";
-import AdminPage from "./pages/Admin/AdminPage";
-import PersonalInfo from "./pages/Personalinfo";
+import RegisterPage from "./pages/member/RegisterPage";
+import LoginPage from "./pages/member/LoginPage";
+import ProfilePage from "./pages/member/ProfilePage";
+import ReservationPage from "./pages/member/ReservationPage";
+import ContactPage from "./pages/member/ContactPage";
+import AdminPage from "./pages/admin/AdminPage";
+import PersonalInfo from "./pages/member/Personalinfo";
 import PrivateRoute from "./components/privateroute/PrivateRoute";
-import LessonsPage from "./pages/Admin/LessonsPage";
-import MembersPage from "./pages/Admin/MembersPage";
+import LessonsPage from "./pages/admin/LessonsPage";
+import MembersPage from "./pages/admin/MembersPage";
 
 function App() {
 

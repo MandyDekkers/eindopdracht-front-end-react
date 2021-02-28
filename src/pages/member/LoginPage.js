@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useForm } from 'react-hook-form';
-import {AuthContext, useAuthState} from "../context/AuthContext";
+import {AuthContext, useAuthState} from "../../context/AuthContext";
 import './LoginPage.css';
 import './RegisterPage';
 import {useState, useContext, useEffect} from "react";
@@ -25,7 +25,6 @@ function LoginPage() {
         }
         console.log(isAuthenticated);
     }, [isAuthenticated]);
-
     async function formSubmit(data) {
         toggleLoading(true);
         setError('');

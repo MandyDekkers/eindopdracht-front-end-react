@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../components/header/Header";
+import Header from "../../components/header/Header";
 import axios from "axios";
-import LessonToReserve from "../components/lesson/LessonToReserve";
-import PageHeader from "../components/header/PageHeader";
-import sport from "../assets/sport.png";
+import LessonToReserve from "../../components/lesson/LessonToReserve";
+import PageHeader from "../../components/header/PageHeader";
+import sport from "../../assets/sport.png";
 import './ReservationPage.css'
-import {useAuthState} from "../context/AuthContext";
+import {useAuthState} from "../../context/AuthContext";
 
 function ReservationPage() {
 
@@ -59,6 +59,25 @@ function ReservationPage() {
         toggleLoading(false);
     }
 
+    async function deleteReservation(id){
+        toggleLoading(true);
+        setError('');
+        const token = localStorage.getItem('token');
+        try {
+            await axios.delete(`http://localhost:8080/appuser/${user.id}/lesson/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            console.log("hoooooi")
+            getReservedLessons();
+        } catch (error) {
+            setError('Er is iets misgegaan bij het verwijderen van de reservering')
+        }
+        toggleLoading(false);
+    }
+
     return (
         <>
             <div className="cont">
@@ -72,9 +91,20 @@ function ReservationPage() {
                                 <h3>{lesson.name}</h3>
                                 <h4>{lesson.date}</h4>
                                 <h4>Max. aantal deelnemers: {lesson.maxAmountMembers}</h4>
-                                <h4>Niveau: {lesson.niveau} </h4>
+                                <h4 className="commentpadding">Niveau: {lesson.niveau} </h4>
                                 <h4>Opmerking: {lesson.comment} </h4>
                                 <h4 className="plannedlesson">Leuk dat je aan deze les meedoet!</h4>
+                                <div className="deletereservation">
+                                    <button
+                                        className="deletebuttonreservation"
+                                        type="submit"
+                                        disabled={loading}
+                                        onClick={() => deleteReservation(lesson.id)}
+                                    >
+                                        {loading ? 'Laden...' : 'Annuleer reservering'}
+                                    </button>
+                                </div>
+                                {error && <p className="message-error">{error}</p>}
                             </div>
                         </>
                     ))}

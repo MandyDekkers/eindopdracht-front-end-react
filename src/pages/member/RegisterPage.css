@@ -12,7 +12,7 @@
     justify-content: space-between;
     padding: 40px;
     background: rgba(255,255,255,0.4);
-    color: black;
+    color: rgba(0,0,0,1);
     width: 325px;
     height: 950px;
     border-radius: 2px;
@@ -23,11 +23,11 @@
     width: 100%;
     margin-bottom: 15px;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgba(67,67,67,1);
     background: transparent;
     height: 30px;
     outline: none;
-    color: grey;
+    color: rgba(67,67,67,1);
 
 }
 
@@ -40,9 +40,9 @@
 
 .register-button {
     background: transparent;
-    border: 1px solid grey;
+    border: 1px solid rgba(67,67,67,1);
     border-radius: 2px;
-    color: grey;
+    color: rgba(67,67,67,1);
     margin-top: 10px;
     padding: 6px;
 }
@@ -52,7 +52,7 @@
 }
 
 .error-register {
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
     padding-bottom: 15px;
 }
@@ -61,7 +61,7 @@
     display: flex;
     justify-content: center ;
     align-items: center;
-    color: darkred;
+    color: rgba(255,0,0,1);
     font-size: 11px;
     padding-top: 15px;
 

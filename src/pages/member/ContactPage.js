@@ -1,10 +1,10 @@
 import React from 'react';
 import './ContactPage.css';
-import Header from "../components/header/Header";
+import Header from "../../components/header/Header";
 import {useForm} from "react-hook-form";
-import question from "../assets/question.png";
-import PageHeader from "../components/header/PageHeader";
-import {useAuthState} from "../context/AuthContext";
+import question from "../../assets/question.png";
+import PageHeader from "../../components/header/PageHeader";
+import {useAuthState} from "../../context/AuthContext";
 
 function ContactPage() {
     const { register, errors } = useForm();

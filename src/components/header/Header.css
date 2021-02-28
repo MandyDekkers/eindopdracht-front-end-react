@@ -22,7 +22,7 @@
 
 nav {
     width: 100%;
-    background-color: white;
+    background-color: rgba(255,255,255,1);
     display: flex;
     justify-content: center;
     height: 60px;
@@ -40,10 +40,10 @@ ul {
 a,
 a:visited,
 a:hover {
-    color: black;
+    color: rgba(0,0,0,1);
     text-decoration: none;
 }
 
 .active-link {
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid rgba(0,0,0,1);
 }
